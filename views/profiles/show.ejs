@@ -2,19 +2,22 @@
 <%- include('../partials/nav') %>
 
 <link rel="stylesheet" href="/stylesheets/profiles/show.css">
+<script src="https://kit.fontawesome.com/73eb34af13.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
   <main>
     <header>
-      <img src="https://picsum.photos/500/200" alt="">
+      <img src="https://picsum.photos/800/200" alt="">
       <img
         id="profile-image"
         src="<%= profile.avatar %>" 
         alt="<%= profile.name %> avatar"
       >
     </header>
-    <% profile. %> 
+    <% posts.forEach(function(post) { %>
+      <%- include('../partials/post', {post: post}) %>
+    <% }) %>  
   </main>
 
 <%- include('../partials/footer') %>
