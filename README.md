@@ -17,7 +17,7 @@
 
 ## Next Steps
 
-- [ ] OAuth login
+- [x] OAuth login
 - [ ] User can see a feed of Posts
 - [ ] User can create a new Post
 - [ ] User can view another User's Profile
