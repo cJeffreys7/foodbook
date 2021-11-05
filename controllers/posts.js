@@ -6,6 +6,18 @@ function newPost(req, res) {
   })
 }
 
+function create(req, res) {
+  Post.create(req.body)
+  .then(post => {
+    res.redirect('/')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/')
+  })
+}
+
 export {
-  newPost as new
+  newPost as new,
+  create
 }
