@@ -1,0 +1,29 @@
+<%- include('../partials/html-head') %>
+
+<link rel="stylesheet" href="/stylesheets/posts/new.css">
+
+</head>
+<body>
+  <form action="/posts" method="POST">
+    <nav>
+      <a href="/posts/index">
+        <div>Cancel</div>
+      </a>
+      <div>New Post</div>
+      <a href="/posts">
+        <div>Post</div>
+      </a>
+    </nav>
+    <main>
+      <header>
+        <img 
+          src="<%= user.profile.avatar %>" 
+          alt="<%= user.profile.name %> avatar"
+        >
+        <div><%= user.profile.name %></div>
+      </header>
+        <textarea id="text-input" name="text" cols="40" rows="40" style="resize: none;" placeholder="What's new in the food world, <%= user.profile.name %>?"></textarea>
+    </main>
+  </form>
+
+<%- include('../partials/footer') %>
