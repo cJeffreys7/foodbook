@@ -1,4 +1,5 @@
 import { Post } from '../models/post.js'
+import { Profile } from '../models/profile.js'
 
 function index(req, res) {
   Post.find({})
@@ -25,7 +26,12 @@ function create(req, res) {
   req.body.owner = req.user.profile._id
   Post.create(req.body)
   .then(post => {
-    res.redirect('posts')
+    Profile.findById(req.user.profile._id)
+    .then(profile => {
+      profile.posts.push(post._id)
+      profile.save()
+      res.redirect('posts')
+    })
   })
   .catch(err => {
     console.log(err)
