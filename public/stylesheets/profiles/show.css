@@ -31,10 +31,8 @@ header {
   width: 128px;
 }
 
-#text-input {
-  width: 80%;
-  height: 100%;
-  border: none;
+.profile-icon {
+  font-size: 750%;
 }
 
 article {

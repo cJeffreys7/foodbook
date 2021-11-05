@@ -5,14 +5,20 @@ function show(req, res) {
   Profile.findById(req.params.id)
   .populate('posts')
   .then(profile => {
-    Post.find({owner: req.params.id})
-    .populate('owner')
-    // profile.posts.populate('owner')
-    .then(posts => {
-      res.render('profiles/show', {
-        title: 'Show Profile',
-        profile,
-        posts: posts
+    Profile.findById(req.user.profile._id)
+    .then(self => {
+      const isSelf = self._id.equals(profile._id)
+      Post.find({owner: req.params.id})
+      .populate('owner')
+      .then(posts => {
+        console.log('Followed profiles:', profile.followedProfiles)
+        profile.posts = posts
+        res.render('profiles/show', {
+          title: 'Show Profile',
+          profile,
+          isSelf,
+          self
+        })
       })
     })
   })
