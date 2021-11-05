@@ -20,17 +20,23 @@
         <%- include('../partials/post', {post: post}) %>
       <% }) %>
     <% } else { %>
-      <% if (user.followedProfiles && user.followedProfiles.includes(profile._id)) { %>
-        <a href="#">
-          <i class="fas fa-user-minus profile-icon"></i>
-        </a>
+      <% if (self.followedProfiles && self.followedProfiles.includes(profile._id)) { %>
+        <form action="/profiles/<%= user.profile._id %>?_method=PATCH" method="POST">
+          <input type="hidden" name="profileId" value="<%= profile._id %>">
+          <button type="submit">
+            <i class="fas fa-user-minus profile-icon"></i>
+          </button>
+        </form>
         <% profile.posts.forEach(function(post) { %>
           <%- include('../partials/post', {post: post}) %>
         <% }) %>
       <% } else { %>
-        <a href="#">
-          <i class="fas fa-user-plus profile-icon"></i>
-        </a>
+        <form action="/profiles/<%= user.profile._id %>?_method=PATCH" method="POST">
+          <input type="hidden" name="profileId" value="<%= profile._id %>">
+          <button type="submit">
+            <i class="fas fa-user-plus profile-icon"></i>
+          </button>
+        </form>
       <% } %>
     <% } %>
   </main>

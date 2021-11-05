@@ -20,8 +20,8 @@
 - [x] OAuth login
 - [x] User can see a feed of Posts
 - [x] User can create a new Post
-- [ ] User can view another User's Profile
-- [ ] User can follow another User
+- [x] User can view another User's Profile
+- [x] User can follow another User
 - [ ] User can view followed User Profiles
 - [ ] User can favorite a Post
 - [ ] User can view favorited Posts

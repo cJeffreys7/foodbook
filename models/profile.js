@@ -7,7 +7,12 @@ const profileSchema = new Schema({
   avatar: String,
   posts: [{type: Schema.Types.ObjectId, ref: 'Post'}],
   favoritePosts: [{type: Schema.Types.ObjectId, ref: 'Post'}],
-  followedProfiles: [{type: Schema.Types.ObjectId, ref: 'Profile'}]
+  followedProfiles: [
+    {
+      type: Schema.Types.ObjectId, ref: 'Profile',
+      unique: true
+    }
+  ]
 }, {
   timestamps: true
 })
