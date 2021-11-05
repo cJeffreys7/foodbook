@@ -1,0 +1,19 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<link rel="stylesheet" href="/stylesheets/profiles/show.css">
+
+</head>
+<body>
+  <main>
+    <header>
+      <img src="https://picsum.photos/500/200" alt="">
+      <img
+        id="profile-image"
+        src="<%= profile.avatar %>" 
+        alt="<%= profile.name %> avatar"
+      >
+    </header>
+  </main>
+
+<%- include('../partials/footer') %>

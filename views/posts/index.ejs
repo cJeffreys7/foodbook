@@ -8,10 +8,12 @@
   <% posts.forEach(function(post) { %>
     <article>
       <header>
-        <img 
-          src="<%= post.owner.avatar %>" 
-          alt="<%= post.owner.name %> avatar"
-        >
+        <a href="profiles/<%= post.owner._id %>">
+          <img 
+            src="<%= post.owner.avatar %>" 
+            alt="<%= post.owner.name %> avatar"
+          >
+        </a>
         <div id="post-info">
           <div>
             <%= post.owner.name %>
