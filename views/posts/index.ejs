@@ -1,0 +1,52 @@
+<%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/posts/index.css">
+<script src="https://kit.fontawesome.com/73eb34af13.js" crossorigin="anonymous"></script>
+
+<%- include('../partials/nav') %>
+
+<main>
+  <% posts.forEach(function(post) { %>
+    <article>
+      <header>
+        <img 
+          src="<%= post.owner.avatar %>" 
+          alt="<%= post.owner.name %> avatar"
+        >
+        <div id="post-info">
+          <div>
+            <%= post.owner.name %>
+          </div>
+          <div>
+            <%= post.createdAt.toLocaleDateString() + " at " + post.createdAt.toLocaleTimeString().slice(0, -6) + post.createdAt.toLocaleTimeString().slice(-3) %> 
+          </div>
+        </div>
+      </header>
+      <section>
+        <%= post.text %> 
+      </section>
+      <footer>
+        <div id="post-stats">
+          <i class="fas fa-thumbs-up"></i>
+          <i class="fas fa-comment"></i>
+          <i class="fas fa-star"></i>
+        </div>
+        <div id="post-actions">
+          <div>
+            <i class="fas fa-thumbs-up"></i>
+            Like
+          </div>
+          <div>
+            <i class="fas fa-comment"></i>
+            Comment
+          </div>
+          <div>
+            <i class="fas fa-star"></i>
+            Favorite
+          </div>
+        </div>
+      </footer>
+    </article>
+  <% }) %> 
+</main>
+
+<%- include('../partials/footer') %>

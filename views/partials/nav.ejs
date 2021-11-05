@@ -5,6 +5,16 @@
 <body>
   <nav>
     <% if (user) { %>
+      <a href="/posts">
+        <button type="submit">
+          Newsfeed
+        </button>
+      </a>
+      <a href="/posts/new">
+        <button class="btn" type="submit">
+          New Post
+        </button>
+      </a>
       <a href="/auth/logout">
         <button type="submit">Logout</button>
       </a>
@@ -15,9 +25,4 @@
         </button>
       </a>
     <% } %>
-    <a href="/posts/new">
-      <button class="btn" type="submit">
-        New Post
-      </button>
-    </a>
   </nav>

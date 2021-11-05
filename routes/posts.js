@@ -4,6 +4,9 @@ import { isLoggedIn } from '../middleware/middleware.js'
 
 const router = Router()
 
+// localhost:3000/posts - GET
+router.get('/', isLoggedIn, postsCtrl.index)
+
 // localhost:3000/posts/new - GET
 router.get('/new', isLoggedIn, postsCtrl.new)
 

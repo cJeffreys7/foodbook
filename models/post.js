@@ -9,6 +9,8 @@ const commentSchema = new Schema ({
     type: Schema.Types.ObjectId, ref: 'Profile'
   }],
   images: [String]
+}, {
+  timestamps: true
 })
 
 const postSchema = new Schema ({
@@ -18,6 +20,8 @@ const postSchema = new Schema ({
   favorites: [{type: Schema.Types.ObjectId, ref: 'Profile'}],
   owner: {type: Schema.Types.ObjectId, ref: 'Profile'},
   images: [String]
+}, {
+  timestamps: true
 })
 
 const Post = mongoose.model('Post', postSchema)
