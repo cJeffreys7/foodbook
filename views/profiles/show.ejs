@@ -21,7 +21,7 @@
       <% }) %>
     <% } else { %>
       <% if (self.followedProfiles && self.followedProfiles.includes(profile._id)) { %>
-        <form action="/profiles/<%= user.profile._id %>?_method=PATCH" method="POST">
+        <form action="/profiles/<%= user.profile._id %>/toggleFollowing?_method=PATCH" method="POST">
           <input type="hidden" name="profileId" value="<%= profile._id %>">
           <button type="submit">
             <i class="fas fa-user-minus profile-icon"></i>
@@ -31,7 +31,7 @@
           <%- include('../partials/post', {post: post}) %>
         <% }) %>
       <% } else { %>
-        <form action="/profiles/<%= user.profile._id %>?_method=PATCH" method="POST">
+        <form action="/profiles/<%= user.profile._id %>/toggleFollowing?_method=PATCH" method="POST">
           <input type="hidden" name="profileId" value="<%= profile._id %>">
           <button type="submit">
             <i class="fas fa-user-plus profile-icon"></i>

@@ -35,8 +35,13 @@
         Comment
       </div>
       <div>
-        <i class="fas fa-star"></i>
-        Favorite
+        <form action="/profiles/<%= user.profile._id %>/toggleFavorite?_method=PATCH" method="POST">
+          <input type="hidden" name="postId" value="<%= post._id %>">
+          <button class="btn" type="submit">
+            <i class="fas fa-star"></i>
+            Favorite
+          </button>
+        </form>
       </div>
     </div>
   </footer>

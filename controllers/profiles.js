@@ -38,16 +38,34 @@ function show(req, res) {
   })
 }
 
-function update(req, res) {
+function toggleFollowing(req, res) {
   Profile.findById(req.params.id)
   .then(profile => {
     const foundId = profile.followedProfiles.findIndex(followedProfile => followedProfile.toString().includes(req.body.profileId))
     if (foundId >= 0) {
       profile.followedProfiles.splice(foundId, 1)
-      console.log('Unfollowed profile')
     } else {
       profile.followedProfiles.push(req.body.profileId)
-      console.log('Followed profile')
+    }
+    profile.save()
+    .then(() => {
+      res.redirect(`/profiles/${req.body.profileId}`)
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
+function toggleFavorite(req, res) {
+  Profile.findById(req.params.id)
+  .then(profile => {
+    const foundId = profile.favoritePosts.findIndex(favoritePost => favoritePost.toString().includes(req.body.postId))
+    if (foundId >= 0) {
+      profile.favoritePosts.splice(foundId, 1)
+    } else {
+      profile.favoritePosts.push(req.body.postId)
     }
     profile.save()
     .then(() => {
@@ -63,5 +81,6 @@ function update(req, res) {
 export {
   index,
   show,
-  update
+  toggleFollowing,
+  toggleFavorite
 }

@@ -11,8 +11,11 @@ router.get('/', profilesCtrl.index)
 // localhost:3000/profiles/:id - GET
 router.get('/:id', profilesCtrl.show)
 
-// localhost:3000/profiles/:id - PATCH
-router.patch('/:id', isLoggedIn,profilesCtrl.update)
+// localhost:3000/profiles/:id/toggleFollowing - PATCH
+router.patch('/:id/toggleFollowing', isLoggedIn,profilesCtrl.toggleFollowing)
+
+// localhost:3000/profiles/:id/toggleFavorite - PATCH
+router.patch('/:id/toggleFavorite', profilesCtrl.toggleFavorite)
 
 export {
   router
