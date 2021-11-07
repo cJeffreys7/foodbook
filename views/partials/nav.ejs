@@ -5,23 +5,32 @@
 <body>
   <nav>
     <% if (user) { %>
+      <link rel="stylesheet" href="/stylesheets/nav.css">
+      <script src="https://kit.fontawesome.com/73eb34af13.js" crossorigin="anonymous"></script>
       <a href="/posts">
         <button type="submit">
-          Newsfeed
+          <i class="fas fa-newspaper"></i>
         </button>
       </a>
       <a href="/posts/new">
         <button class="btn" type="submit">
-          New Post
+          <i class="fas fa-pen"></i>
         </button>
       </a>
       <a href="/profiles">
         <button class="btn" type="submit">
-          Followed Profiles
+          <i class="fas fa-users"></i>
+        </button>
+      </a>
+      <a href="/posts/<%= user.profile._id %>/favorites">
+        <button class="btn" type="submit">
+          <i class="fas fa-star"></i>
         </button>
       </a>
       <a href="/auth/logout">
-        <button type="submit">Logout</button>
+        <button type="submit">
+          <i class="fas fa-door-open"></i>
+        </button>
       </a>
     <% } else { %>
       <a href="/auth/google" class="siwg-link">

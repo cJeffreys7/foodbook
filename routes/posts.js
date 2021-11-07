@@ -7,6 +7,9 @@ const router = Router()
 // localhost:3000/posts - GET
 router.get('/', isLoggedIn, postsCtrl.index)
 
+// localhost:3000/posts/:id/favorites - GET
+router.get('/:id/favorites', isLoggedIn, postsCtrl.indexFavorites)
+
 // localhost:3000/posts/new - GET
 router.get('/new', isLoggedIn, postsCtrl.new)
 
