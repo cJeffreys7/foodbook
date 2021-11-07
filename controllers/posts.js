@@ -12,7 +12,7 @@ function index(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('posts')
+    res.redirect('/posts')
   })
 }
 
@@ -20,15 +20,13 @@ function indexFavorites(req, res) {
   Profile.findById(req.params.id)
   .populate('favoritePosts')
   .then(profile => {
-    console.log('Favorite Posts:', profile.favoritePosts)
     if (!profile.favoritePosts.length) {
       throw new Error ('No Favorite Posts')
     }
     Post.find({favorites: req.user.profile._id})
       .populate('owner')
       .then(posts => {
-        console.log('Populated posts:', posts)
-        res.render('posts/index', {
+        res.render('posts', {
           title: 'Favorite Posts',
           posts: posts
       })
@@ -36,7 +34,7 @@ function indexFavorites(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('posts')
+    res.redirect('/posts')
   })
 }
 
@@ -54,12 +52,29 @@ function create(req, res) {
     .then(profile => {
       profile.posts.push(post._id)
       profile.save()
-      res.redirect('posts')
+      res.redirect('/posts')
     })
   })
   .catch(err => {
     console.log(err)
-    res.redirect('posts')
+    res.redirect('/posts')
+  })
+}
+
+function createComment(req, res) {
+  Post.findById(req.params.id)
+  .then(post => {
+    req.body.name = req.user.profile.name
+    req.body.avatar = req.user.profile.avatar
+    req.body.ownerId = req.user.profile._id
+    console.log('Comment content:', req.body)
+    post.comments.push(req.body)
+    post.save()
+    res.redirect('/posts')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/posts')
   })
 }
 
@@ -67,5 +82,6 @@ export {
   index,
   indexFavorites,
   newPost as new,
-  create
+  create,
+  createComment
 }

@@ -3,8 +3,10 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const commentSchema = new Schema ({
+  name: String,
+  avatar: String,
+  ownerId: String,
   text: String,
-  owner: {type: Schema.Types.ObjectId, ref: 'Profile'},
   likes: [{
     type: Schema.Types.ObjectId, ref: 'Profile'
   }],

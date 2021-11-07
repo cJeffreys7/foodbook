@@ -1,0 +1,25 @@
+<header id="comment-header">
+  <a href="profiles/<%= comment.ownerId %>">
+    <img
+      id="avatar-img"
+      src="<%= comment.avatar %>"
+      alt="<%= comment.name %> avatar"
+    >
+  </a>
+  <div id="comment-info">
+    <div>
+      <%= comment.name %>
+    </div>
+    <div>
+      <%= comment.createdAt.toLocaleDateString() + " at " + comment.createdAt.toLocaleTimeString().slice(0, -6) + comment.createdAt.toLocaleTimeString().slice(-3) %> 
+    </div>
+  </div>
+</header>
+<section>
+  <%= comment.text %> 
+</section>
+<div id="comment-actions">
+  <div>
+    <i class="fas fa-thumbs-up"></i>
+    Like
+  </div>

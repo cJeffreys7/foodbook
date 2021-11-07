@@ -9,8 +9,6 @@ header {
   width: 64px;
 }
 
-/* Un-DRY CSS above */
-
 main {
   display: flex;
   flex-direction: column;

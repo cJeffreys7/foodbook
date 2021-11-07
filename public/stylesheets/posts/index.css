@@ -41,3 +41,28 @@ footer > div {
   font-size: 1.2rem;
   height: 24px;
 }
+
+#blank-comment {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  height: fit-content;
+}
+
+#blank-comment-avatar-img {
+  position: absolute;
+  margin-top: 8px;
+  margin-left: 8px;
+}
+
+#comment-text {
+  border: none;
+  outline: none;
+  width: 100%;
+  padding-top: 24px;
+  padding-left: 64px;
+}
+
+#comment-btn {
+  width: 100%;
+}

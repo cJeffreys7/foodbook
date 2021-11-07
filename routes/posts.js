@@ -16,6 +16,9 @@ router.get('/new', isLoggedIn, postsCtrl.new)
 // localhost:3000/posts - POST
 router.post('/', isLoggedIn, postsCtrl.create)
 
+// localhost:3000/posts/:id/comments - POST
+router.post('/:id/comments', postsCtrl.createComment)
+
 export {
   router
 }
