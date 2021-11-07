@@ -22,7 +22,7 @@
 - [x] User can create a new Post
 - [x] User can view another User's Profile
 - [x] User can follow another User
-- [ ] User can view followed User Profiles
+- [x] User can view followed User Profiles
 - [ ] User can favorite a Post
 - [ ] User can view favorited Posts
 - [ ] User can view own Profile to see own Posts

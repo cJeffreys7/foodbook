@@ -1,24 +1,26 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
-<link rel="stylesheet" href="/stylesheets/profiles/show.css">
+<link rel="stylesheet" href="/stylesheets/profiles/index.css">
 <script src="https://kit.fontawesome.com/73eb34af13.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
   <main>
     <% profile.followedProfiles.forEach(function(followedProfile) { %>
-      <a href="profiles/<%= followedProfile._id %>">
-        <img
-          id="avatar-img"
-          src="<%= followedProfile.avatar %>" 
-          alt="<%= followedProfile.name %> avatar"
-        >
-      </a>
-      <div>
-        <%= followedProfile.name %>
-      </div>
-    <% }) %>
+      <div id="profile-header">
+        <a href="profiles/<%= followedProfile._id %>">
+          <img
+            id="avatar-img"
+            src="<%= followedProfile.avatar %>" 
+            alt="<%= followedProfile.name %> avatar"
+          >
+          </a>
+          <div id="profile-name">
+            <%= followedProfile.name %>
+          </div>
+        </div>
+      <% }) %>
   </main>
 
 <%- include('../partials/footer') %>
