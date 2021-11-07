@@ -69,7 +69,14 @@ function toggleFavorite(req, res) {
     }
     profile.save()
     .then(() => {
-      res.redirect(`/profiles/${req.body.profileId}`)
+      Post.findById(req.body.postId)
+      .then(post => {
+        post.favorites.push(req.user.profile._id)
+        post.save()
+        .then(() => {
+          res.redirect(`/profiles/${req.body.profileId}`)
+        })
+      })
     })
   })
   .catch(err => {
