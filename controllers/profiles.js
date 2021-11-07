@@ -1,6 +1,17 @@
 import { Profile } from "../models/profile.js"
 import { Post } from "../models/post.js"
 
+function index(req, res) {
+  Profile.findById(req.user.profile._id)
+  .populate('followedProfiles')
+  .then(profile => {
+    res.render('profiles', {
+      title: 'Followed Profiles',
+      profile
+    })
+  })
+}
+
 function show(req, res) {
   Profile.findById(req.params.id)
   .populate('posts')
@@ -11,8 +22,6 @@ function show(req, res) {
       Post.find({owner: req.params.id})
       .populate('owner')
       .then(posts => {
-        // console.log('Followed profiles:', self.followedProfiles)
-        // console.log(self)
         profile.posts = posts
         res.render('profiles/show', {
           title: 'Show Profile',
@@ -52,6 +61,7 @@ function update(req, res) {
 }
 
 export {
+  index,
   show,
   update
 }
