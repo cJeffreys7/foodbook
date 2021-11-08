@@ -44,6 +44,16 @@ function newPost(req, res) {
   })
 }
 
+function edit(req, res) {
+  Post.findById(req.params.id)
+  .then(post => {
+    res.render('posts/edit', {
+      title: 'Edit Post',
+      post
+    })
+  })
+}
+
 function create(req, res) {
   req.body.owner = req.user.profile._id
   Post.create(req.body)
@@ -82,6 +92,7 @@ export {
   index,
   indexFavorites,
   newPost as new,
+  edit,
   create,
   createComment
 }

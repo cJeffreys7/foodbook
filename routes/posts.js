@@ -13,6 +13,9 @@ router.get('/:id/favorites', isLoggedIn, postsCtrl.indexFavorites)
 // localhost:3000/posts/new - GET
 router.get('/new', isLoggedIn, postsCtrl.new)
 
+// localhost:3000/posts/:id/edit - GET
+router.get('/:id/edit', postsCtrl.edit)
+
 // localhost:3000/posts - POST
 router.post('/', isLoggedIn, postsCtrl.create)
 

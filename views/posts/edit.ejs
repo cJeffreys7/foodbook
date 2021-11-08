@@ -8,7 +8,7 @@
   <form action="/posts" method="POST">
     <nav>
       <a href="/">Cancel</a>
-      <div>New Post</div>
+      <div>Edit Post</div>
       <button type="submit">Post</button>
     </nav>
     <main>
@@ -19,7 +19,9 @@
         >
         <div><%= user.profile.name %></div>
       </header>
-        <textarea id="text-input" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none" placeholder="What's new in the food world, <%= user.profile.name %>?"></textarea>
+        <textarea id="text-input" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none">
+          <%= post.text %>
+        </textarea>
     </main>
   </form>
 
