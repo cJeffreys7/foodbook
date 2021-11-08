@@ -136,7 +136,6 @@ function deleteComment(req, res) {
   .then(post => {
     const foundId = post.comments.findIndex(comment => comment.toString().includes(req.params.commentId))
     if (foundId >= 0) {
-      console.log('Found comment id:', foundId)
       post.comments.splice(foundId, 1)
     } else {
       console.log('Unable to find comment id')
