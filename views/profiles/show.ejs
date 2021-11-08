@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="/stylesheets/comment.css">
 <link rel="stylesheet" href="/stylesheets/post.css">
 <script src="https://kit.fontawesome.com/73eb34af13.js" crossorigin="anonymous"></script>
+<script defer src="../../functions.js"></script>
 
 </head>
 <body>
@@ -19,7 +20,7 @@
     </header>
     <% if (isSelf) { %>
       <% profile.posts.forEach(function(post, idx) { %>
-        <%- include('../partials/post', {post: post, idx: idx}) %>
+        <%- include('../partials/post', {post, idx}) %>
       <% }) %>
     <% } else { %>
       <% if (self.followedProfiles && self.followedProfiles.includes(profile._id)) { %>
@@ -29,8 +30,8 @@
             <i class="fas fa-user-minus profile-icon"></i>
           </button>
         </form>
-        <% profile.posts.forEach(function(post) { %>
-          <%- include('../partials/post', {post: post}) %>
+        <% profile.posts.forEach(function(post, idx) { %>
+          <%- include('../partials/post', {post, idx}) %>
         <% }) %>
       <% } else { %>
         <form action="/profiles/<%= user.profile._id %>/toggleFollowing?_method=PATCH" method="POST">
@@ -44,3 +45,16 @@
   </main>
 
 <%- include('../partials/footer') %>
+
+<script>
+  const postCommentBtns = document.querySelectorAll(".comment-btn")
+
+  postCommentBtns.forEach(btn => {
+    btn.addEventListener("click", showComments)
+  })
+
+  function showComments(evt) {
+    let postIdx = evt.target.className.slice(-1)
+    document.getElementById(`post-${postIdx}-comments`).style.display = "contents"
+  }
+</script>

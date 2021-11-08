@@ -34,7 +34,7 @@
         Like
       </div>
       <div>
-        <button onclick="showComments()">
+        <button class="comment-btn comment-btn-<%= idx %>">
           <i class="fas fa-comment"></i>
           Comment
         </button>
@@ -49,7 +49,7 @@
         </form>
       </div>
     </div>
-    <section id="post-<%= idx %>-comments" style="display: contents;">
+    <section id="post-<%= idx %>-comments" class="post-comments" style="display: none;">
       <div id="blank-comment">
         <form action="/posts/<%= post._id %>/comments" method="POST">
           <img
@@ -70,9 +70,9 @@
   </footer>
 </article>
 
-<script>
-  function showComments() {
+<!-- <script>
+  function showComments(idx) {
       console.log('Show comments for Post Idx: need to figure out how to get post idx passed into showComments function')
-      document.getElementById(`post-0-comments`).style.display = "contents"
+      document.getElementById(`post-${idx}-comments`).style.display = "contents"
     }
-</script>
+</script> -->
