@@ -2,7 +2,7 @@
 
 ## Getting Started
 
-### To begin using the social network for all things food, first head to the deployed site [here]().
+### To begin using the social network for all things food, first head to the deployed site [here](https://foodbookapp.herokuapp.com/)!
 
 #### Log into FoodBook by using your Google login:
 
