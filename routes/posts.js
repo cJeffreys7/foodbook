@@ -22,6 +22,9 @@ router.post('/', isLoggedIn, postsCtrl.create)
 // localhost:3000/posts/:id/comments - POST
 router.post('/:id/comments', postsCtrl.createComment)
 
+// localhost:3000/posts/:id - PATCH
+router.patch('/:id', postsCtrl.update)
+
 export {
   router
 }

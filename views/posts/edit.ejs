@@ -5,7 +5,7 @@
 
 </head>
 <body>
-  <form action="/posts" method="POST">
+  <form action="/posts/<%= post._id %>?_method=PATCH" method="POST">
     <nav>
       <a href="/">Cancel</a>
       <div>Edit Post</div>

@@ -88,11 +88,25 @@ function createComment(req, res) {
   })
 }
 
+function update(req, res) {
+  Post.findById(req.params.id)
+  .then(post => {
+    post.text = req.body.text
+    post.save()
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
 export {
   index,
   indexFavorites,
   newPost as new,
   edit,
   create,
-  createComment
+  createComment,
+  update
 }
