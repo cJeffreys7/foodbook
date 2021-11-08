@@ -12,6 +12,16 @@ img {
 
 #text-input {
   width: 80%;
-  height: 100%;
   border: none;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+#delete-btn {
+  font-size: 1.4rem;
+  color: red;
 }

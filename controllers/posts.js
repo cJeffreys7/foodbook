@@ -101,6 +101,17 @@ function update(req, res) {
   })
 }
 
+function deletePost(req, res) {
+  Post.findByIdAndDelete(req.params.id)
+  .then(() => {
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
 export {
   index,
   indexFavorites,
@@ -108,5 +119,6 @@ export {
   edit,
   create,
   createComment,
-  update
+  update,
+  deletePost as delete
 }

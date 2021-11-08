@@ -20,10 +20,13 @@ router.get('/:id/edit', postsCtrl.edit)
 router.post('/', isLoggedIn, postsCtrl.create)
 
 // localhost:3000/posts/:id/comments - POST
-router.post('/:id/comments', postsCtrl.createComment)
+router.post('/:id/comments', isLoggedIn, postsCtrl.createComment)
 
 // localhost:3000/posts/:id - PATCH
-router.patch('/:id', postsCtrl.update)
+router.patch('/:id', isLoggedIn, postsCtrl.update)
+
+// localhost:3000/posts/:id - DELETE
+router.delete('/:id', isLoggedIn, postsCtrl.delete)
 
 export {
   router
