@@ -31,6 +31,9 @@ router.patch('/:id/comments/:commentId', postsCtrl.updateComment)
 // localhost:3000/posts/:id - DELETE
 router.delete('/:id', isLoggedIn, postsCtrl.delete)
 
+// localhost:3000/posts/:id/comments/:commentId - DELETE
+router.delete('/:id/comments/:commentId', postsCtrl.deleteComment)
+
 export {
   router
 }

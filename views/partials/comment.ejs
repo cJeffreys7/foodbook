@@ -36,6 +36,14 @@
         Submit
       </button>
     </form>
+    <button id="cancel-edit-comment-btn-<%= idx %>" class="cancel-edit-comment-btn">
+      Cancel
+    </button>
+    <form action="/posts/<%= post._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+      <button type="submit">
+        Delete
+      </button>
+    </form>
   </div>
 </section>
 <div id="comment-actions">

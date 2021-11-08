@@ -16,12 +16,16 @@
 <script>
   const postCommentBtns = document.querySelectorAll(".comment-btn")
   const editCommentBtns = document.querySelectorAll(".edit-comment-btn")
+  const cancelEditCommentBtns = document.querySelectorAll(".cancel-edit-comment-btn")
 
   postCommentBtns.forEach(btn => {
     btn.addEventListener("click", showComments)
   })
   editCommentBtns.forEach(btn => {
     btn.addEventListener("click", editComment)
+  })
+  cancelEditCommentBtns.forEach(btn => {
+    btn.addEventListener("click", cancelCommentEdit)
   })
 
   function showComments(evt) {
@@ -31,9 +35,18 @@
 
   function editComment(evt) {
     let commentIdx = evt.target.id.slice(-1)
-    document.getElementById(`comment-${commentIdx}-header`).style.display = "none"
-    document.getElementById(`edit-comment-btn-${commentIdx}`).style.display = "none"
-    document.getElementById(`comment-${commentIdx}-text`).style.display = "none"
-    document.getElementById(`edit-comment-${commentIdx}-text`).style.display = "contents"
+    toggleEditComment(commentIdx, true)
+  }
+
+  function cancelCommentEdit(evt) {
+    let commentIdx = evt.target.id.slice(-1)
+    toggleEditComment(commentIdx, false)
+  }
+
+  function toggleEditComment(commentIdx, isEditing) {
+    document.getElementById(`comment-${commentIdx}-header`).style.display = isEditing ? "none" : "contents"
+    document.getElementById(`edit-comment-btn-${commentIdx}`).style.display = isEditing ? "none" : "contents"
+    document.getElementById(`comment-${commentIdx}-text`).style.display = isEditing ? "none" : "contents"
+    document.getElementById(`edit-comment-${commentIdx}-text`).style.display = isEditing ? "contents" : "none"
   }
 </script>

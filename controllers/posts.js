@@ -131,6 +131,25 @@ function deletePost(req, res) {
   })
 }
 
+function deleteComment(req, res) {
+  Post.findById(req.params.id)
+  .then(post => {
+    const foundId = post.comments.findIndex(comment => comment.toString().includes(req.params.commentId))
+    if (foundId >= 0) {
+      console.log('Found comment id:', foundId)
+      post.comments.splice(foundId, 1)
+    } else {
+      console.log('Unable to find comment id')
+    }
+    post.save()
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
 export {
   index,
   indexFavorites,
@@ -140,5 +159,6 @@ export {
   createComment,
   update,
   updateComment,
-  deletePost as delete
+  deletePost as delete,
+  deleteComment
 }
