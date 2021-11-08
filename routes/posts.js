@@ -25,6 +25,9 @@ router.post('/:id/comments', isLoggedIn, postsCtrl.createComment)
 // localhost:3000/posts/:id - PATCH
 router.patch('/:id', isLoggedIn, postsCtrl.update)
 
+// localhost:3000/posts/:id/comments/:commentId - PATCH
+router.patch('/:id/comments/:commentId', postsCtrl.updateComment)
+
 // localhost:3000/posts/:id - DELETE
 router.delete('/:id', isLoggedIn, postsCtrl.delete)
 

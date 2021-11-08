@@ -34,7 +34,7 @@
         Like
       </div>
       <div>
-        <button class="comment-btn comment-btn-<%= idx %>">
+        <button id="comment-btn-<%= idx %>" class="comment-btn">
           <i class="fas fa-comment"></i>
           Comment
         </button>
@@ -63,16 +63,9 @@
           </button>
         </form>
       </div>
-      <% post.comments.forEach(function(comment) { %>
-        <%- include('../partials/comment', {comment: comment}) %>
+      <% post.comments.forEach(function(comment, idx) { %>
+        <%- include('../partials/comment', {comment, idx}) %>
       <% }) %>
     </section>
   </footer>
 </article>
-
-<!-- <script>
-  function showComments(idx) {
-      console.log('Show comments for Post Idx: need to figure out how to get post idx passed into showComments function')
-      document.getElementById(`post-${idx}-comments`).style.display = "contents"
-    }
-</script> -->

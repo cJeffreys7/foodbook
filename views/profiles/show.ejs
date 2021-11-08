@@ -54,7 +54,7 @@
   })
 
   function showComments(evt) {
-    let postIdx = evt.target.className.slice(-1)
+    let postIdx = evt.target.id.slice(-1)
     document.getElementById(`post-${postIdx}-comments`).style.display = "contents"
   }
 </script>

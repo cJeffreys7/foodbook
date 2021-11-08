@@ -1,4 +1,4 @@
-<header id="comment-header">
+<header class="comment-header" id="comment-<%= idx %>-header" style="display: contents;">
   <a href="profiles/<%= comment.ownerId %>">
     <img
       id="avatar-img"
@@ -14,12 +14,29 @@
       <%= comment.createdAt.toLocaleDateString() + " at " + comment.createdAt.toLocaleTimeString().slice(0, -6) + comment.createdAt.toLocaleTimeString().slice(-3) %> 
     </div>
   </div>
-  <!-- <%# if (comment.ownerId === user.profile._id.toString()) { %>
-    <a id="edit-link" href="/posts/<%# post._id %>/comments/<%# comment._id %>">Edit</a>
-  <%#} %> -->
 </header>
+<% if (comment.ownerId === user.profile._id.toString()) { %>
+  <button id="edit-comment-btn-<%= idx %>" class="edit-comment-btn">Edit</button>
+<% } %>
 <section>
-  <%= comment.text %> 
+  <div id="comment-<%= idx %>-text" style="display: contents;">
+    <%= comment.text %>
+  </div>
+  <div id="edit-comment-<%= idx %>-text" style="display: none;">
+    <form action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PATCH" method="POST">
+      <img
+        id="blank-comment-avatar-img"
+        src="<%= user.profile.avatar %>"
+        alt="<%= user.profile.name %> avatar"
+      >
+      <textarea id="comment-text" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none" rows="2">
+        <%= comment.text %>
+      </textarea>
+      <button id="comment-btn" type="submit">
+        Submit
+      </button>
+    </form>
+  </div>
 </section>
 <div id="comment-actions">
   <div>

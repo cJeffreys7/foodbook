@@ -101,6 +101,25 @@ function update(req, res) {
   })
 }
 
+function updateComment(req, res) {
+  Post.findById(req.params.id)
+  .then(post => {
+    const foundId = post.comments.findIndex(comment => comment.toString().includes(req.params.commentId))
+    if (foundId >= 0) {
+      console.log('Found comment id:', foundId)
+      post.comments[foundId].text = req.body.text
+    } else {
+      console.log('Unable to find comment id')
+    }
+    post.save()
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
 function deletePost(req, res) {
   Post.findByIdAndDelete(req.params.id)
   .then(() => {
@@ -120,5 +139,6 @@ export {
   create,
   createComment,
   update,
+  updateComment,
   deletePost as delete
 }
