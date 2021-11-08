@@ -7,8 +7,8 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <% posts.forEach(function(post) { %>
-    <%- include('../partials/post', {post: post}) %>
+  <% posts.forEach(function(post, idx) { %>
+    <%- include('../partials/post', {post: post, idx: idx}) %>
   <% }) %>
 </main>
 

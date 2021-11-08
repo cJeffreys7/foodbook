@@ -18,8 +18,8 @@
       >
     </header>
     <% if (isSelf) { %>
-      <% profile.posts.forEach(function(post) { %>
-        <%- include('../partials/post', {post: post}) %>
+      <% profile.posts.forEach(function(post, idx) { %>
+        <%- include('../partials/post', {post: post, idx: idx}) %>
       <% }) %>
     <% } else { %>
       <% if (self.followedProfiles && self.followedProfiles.includes(profile._id)) { %>
