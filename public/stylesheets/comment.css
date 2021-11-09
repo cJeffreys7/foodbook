@@ -1,6 +1,6 @@
 body {
-  --icon-normal: #B36133;
-  --comment-bg: #FFCB97;
+  --main-accent: #005B49;
+  --comment-bg: #fff4e2;
 }
 
 #blank-comment {
@@ -97,5 +97,5 @@ body {
 #comment-actions {
   margin-top: 4px;
   margin-left: 8px;
-  color: var(--icon-normal);
+  color: var(--main-accent);
 }

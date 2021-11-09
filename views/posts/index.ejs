@@ -1,5 +1,6 @@
 <%- include('../partials/html-head') %>
-<%- include('../partials/nav') %>
+
+<%- include('../partials/nav', {nav: title === "Newsfeed" ? "newsfeed" : "favorites"}) %>
 <link rel="stylesheet" href="/stylesheets/posts/index.css">
 <link rel="stylesheet" href="/stylesheets/comment.css">
 <link rel="stylesheet" href="/stylesheets/post.css">
@@ -47,5 +48,9 @@
     document.getElementById(`edit-comment-btn-${commentIdx}`).style.display = isEditing ? "none" : "flex"
     document.getElementById(`comment-${commentIdx}-text`).style.display = isEditing ? "none" : "contents"
     document.getElementById(`edit-comment-${commentIdx}-text`).style.display = isEditing ? "contents" : "none"
+  }
+
+  function log(){
+    console.log('Hello');
   }
 </script>

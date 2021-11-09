@@ -15,9 +15,11 @@
         <%= post.createdAt.toLocaleDateString() + " at " + post.createdAt.toLocaleTimeString().slice(0, -6) + post.createdAt.toLocaleTimeString().slice(-3) %> 
       </div>
     </div>
-    <% if (post.owner._id.toString() === user.profile._id.toString()) { %>
-      <a id="edit-link" href="/posts/<%= post._id %>/edit">Edit</a>
-    <% } %>
+    <div id="edit-link-wrapper">
+      <% if (post.owner._id.toString() === user.profile._id.toString()) { %>
+        <a id="edit-link" href="/posts/<%= post._id %>/edit">Edit</a>
+      <% } %>
+    </div>
   </header>
   <section>
     <%= post.text %> 

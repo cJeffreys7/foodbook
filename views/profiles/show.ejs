@@ -1,11 +1,11 @@
 <%- include('../partials/html-head') %>
-<%- include('../partials/nav') %>
+<!-- <%# let nav = isSelf ? "selfProfile" : "" %> -->
+<%- include('../partials/nav', {nav: "selfProfile"}) %>
 
 <link rel="stylesheet" href="/stylesheets/profiles/show.css">
 <link rel="stylesheet" href="/stylesheets/comment.css">
 <link rel="stylesheet" href="/stylesheets/post.css">
 <script src="https://kit.fontawesome.com/73eb34af13.js" crossorigin="anonymous"></script>
-<script defer src="../../functions.js"></script>
 
 </head>
 <body>

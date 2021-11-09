@@ -1,28 +1,49 @@
 body {
-  --icon-normal: #B36133;
-  --link-bg: #FFCB97;
+  --main-accent: #005B49;
+  --nav-link: #98B0A8;
 }
 
 nav {
   position: fixed;
   width: 100%;
+  height: 48px;
   display: flex;
   justify-content: space-around;
-  background-color: var(--link-bg);
-  padding-top: 12px;
-  padding-bottom: 12px;
+  align-items: stretch;
+  background-color: var(--main-accent);
 }
 
 button {
   background: none;
   border: none;
   padding: 0;
-  color:var(--icon-normal);
+  color: var(--main-accent);
   font-size: 2.3rem;
 }
-
-a {
+  
+.nav-link {
+  display: flex;
+  justify-content: center;
   text-decoration: none;
-  color:var(--icon-normal);
+  color: var(--nav-link);
   font-size: 2.1rem;
+  width: 100%;
+  height: 100%;
+}
+
+.cancel-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: var(--nav-link);
+  font-size: 2.1rem;
+}
+
+a > button {
+  color: var(--nav-link);
+}
+
+.active-nav {
+  background-color: #ffffff;
 }

@@ -10,9 +10,10 @@ article {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width: 80%;
+  width: 97%;
   margin-top: 12px;
   margin-left: 12px;
+  margin-right: 12px;
 }
 
 #avatar-img {
@@ -37,10 +38,16 @@ article {
   color: gray;
 }
 
+#edit-link-wrapper {
+  flex-grow: 1;
+}
+
 #edit-link {
-  position: absolute;
-  right: 8px;
-  font-size: 2rem;
+  display: flex;
+  justify-content: flex-end;
+  text-decoration: none;
+  color: var(--nav-link);
+  font-size: 2.1rem;
 }
 
 article > section {
