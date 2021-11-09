@@ -19,8 +19,8 @@
       >
     </header>
     <% if (isSelf) { %>
-      <% profile.posts.forEach(function(post, idx) { %>
-        <%- include('../partials/post', {post, idx}) %>
+      <% profile.posts.forEach(function(post, postIdx) { %>
+        <%- include('../partials/post', {post, postIdx}) %>
       <% }) %>
     <% } else { %>
       <% if (self.followedProfiles && self.followedProfiles.includes(profile._id)) { %>
@@ -30,8 +30,8 @@
             <i class="fas fa-user-minus profile-icon"></i>
           </button>
         </form>
-        <% profile.posts.forEach(function(post, idx) { %>
-          <%- include('../partials/post', {post, idx}) %>
+        <% profile.posts.forEach(function(post, postIdx) { %>
+          <%- include('../partials/post', {post, postIdx}) %>
         <% }) %>
       <% } else { %>
         <form action="/profiles/<%= user.profile._id %>/toggleFollowing?_method=PATCH" method="POST">

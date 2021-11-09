@@ -8,8 +8,8 @@
 <script defer src='/js/comment-functions.js'></script>
 
 <main>
-  <% posts.forEach(function(post, idx) { %>
-    <%- include('../partials/post', {post, idx}) %>
+  <% posts.forEach(function(post, postIdx) { %>
+    <%- include('../partials/post', {post, postIdx}) %>
   <% }) %>
 </main>
 

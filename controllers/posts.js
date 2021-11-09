@@ -128,7 +128,7 @@ function toggleLike(req, res) {
       post.likes.push(req.user.profile._id)
     }
     post.save()
-    res.redirect(`/profiles/${req.user.profile._id}`)
+    res.status(204).send()
   })
   .catch(err => {
     console.log(err)
@@ -143,16 +143,15 @@ function toggleCommentLike(req, res) {
     if (foundId >= 0) {
       const foundLikeId = post.comments[foundId].likes.findIndex(like => like.toString().includes(req.user.profile._id))
       if (foundLikeId >= 0) {
-        post.comments[foundId].likes[foundLikeId].splice(foundLikeId, 1)
+        post.comments[foundId].likes.splice(foundLikeId, 1)
       } else {
         post.comments[foundId].likes.push(req.user.profile._id)
       }
-      post.comments[foundId].text = req.body.text
     } else {
       console.log('Unable to find comment id')
     }
     post.save()
-    res.redirect(`/profiles/${req.user.profile._id}`)
+    res.status(204).send()
   })
   .catch(err => {
     console.log(err)

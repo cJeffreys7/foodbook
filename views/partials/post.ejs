@@ -33,14 +33,14 @@
     <div id="post-actions">
       <div>
         <form action="/posts/<%= post._id %>/toggleLike?_method=PATCH" method="POST">
-          <button class="post-action-btn <%= (post.likes.includes(user.profile._id)) ? "action-highlight" : "" %> ">
+          <button class="post-action-btn <%= (post.likes.includes(user.profile._id)) ? "action-highlight" : "" %>">
             <i class="fas fa-thumbs-up"></i>
             Like
           </button>
         </form>
       </div>
       <div>
-        <button id="comment-btn-<%= idx %>" class="comment-btn post-action-btn <%= (post.comments.some(comment => comment.ownerId === user.profile._id.toString())) ? "action-highlight" : "" %> ">
+        <button id="comment-btn-<%= postIdx %>" class="comment-btn post-action-btn <%= (post.comments.some(comment => comment.ownerId === user.profile._id.toString())) ? "action-highlight" : "" %>">
           <i class="fas fa-comment"></i>
           Comment
         </button>
@@ -48,14 +48,14 @@
       <div>
         <form action="/profiles/<%= user.profile._id %>/toggleFavorite?_method=PATCH" method="POST">
           <input type="hidden" name="postId" value="<%= post._id %>">
-          <button class="btn  post-action-btn <%= (post.favorites.includes(user.profile._id)) ? "action-highlight" : "" %> " type="submit">
+          <button class="btn  post-action-btn <%= (post.favorites.includes(user.profile._id)) ? "action-highlight" : "" %>" type="submit">
             <i class="fas fa-star"></i>
             Favorite
           </button>
         </form>
       </div>
     </div>
-    <section id="post-<%= idx %>-comments" class="post-comments" style="display: none;">
+    <section id="post-<%= postIdx %>-comments" class="post-comments" style="display: none;">
       <div id="blank-comment">
         <form action="/posts/<%= post._id %>/comments" method="POST">
           <img
@@ -69,8 +69,8 @@
           </button>
         </form>
       </div>
-      <% post.comments.forEach(function(comment, idx) { %>
-        <%- include('../partials/comment', {comment, idx}) %>
+      <% post.comments.forEach(function(comment, commentIdx) { %>
+        <%- include('../partials/comment', {comment, postIdx, commentIdx}) %>
       <% }) %>
     </section>
   </footer>

@@ -1,5 +1,5 @@
-<section id="comment-<%= idx %>">
-  <header class="comment-header" id="comment-<%= idx %>-header" style="display: flex;">
+<section id="comment-<%= commentIdx %>">
+  <header class="comment-header" id="comment-<%= commentIdx %>-header" style="display: flex;">
     <a href="profiles/<%= comment.ownerId %>">
       <img
         id="avatar-img"
@@ -18,13 +18,13 @@
   </header>
   <section id="comment-body">
     <div id="comment-text-body">
-      <div id="comment-<%= idx %>-text" style="display: contents;">
+      <div id="comment-<%= commentIdx %>-text" style="display: contents;">
         <%= comment.text %>
         <% if (comment.ownerId === user.profile._id.toString()) { %>
-          <button id="edit-comment-btn-<%= idx %>" class="edit-comment-btn">Edit</button>
+          <button id="edit-comment-btn-<%= commentIdx %>" class="edit-comment-btn">Edit</button>
         <% } %>
       </div>
-      <div id="edit-comment-<%= idx %>-text" class="edit-comment-body" style="display: none;">
+      <div id="edit-comment-<%= commentIdx %>-text" class="edit-comment-body" style="display: none;">
         <form id="edit-text-form" action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PATCH" method="POST">
           <textarea id="edit-text-area" class="comment-text" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>
             <%= comment.text %>
@@ -33,7 +33,7 @@
             Submit
           </button>
         </form>
-        <button id="cancel-edit-comment-btn-<%= idx %>" class="cancel-edit-comment-btn edit-btn">
+        <button id="cancel-edit-comment-btn-<%= commentIdx %>" class="cancel-edit-comment-btn edit-btn">
           Cancel
         </button>
         <form action="/posts/<%= post._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">
@@ -45,7 +45,7 @@
     </div>
     <div id="comment-actions">
       <form action="/posts/<%= post._id %>/comments/<%= comment._id %>/toggleLike?_method=PATCH" method="POST">
-        <button class="edit-btn <%= (comment.likes.includes(user.profile._id)) ? "action-highlight" : "" %> " type="submit">
+        <button id="post-<%= postIdx %>-like-comment-<%= commentIdx %>-btn" class="edit-btn like-btn <%= (comment.likes.includes(user.profile._id)) ? "action-highlight" : "" %>" type="submit">
           <i class="fas fa-thumbs-up"></i>
           Like
         </button>
