@@ -28,6 +28,9 @@ router.patch('/:id', isLoggedIn, postsCtrl.update)
 // localhost:3000/posts/:id/comments/:commentId - PATCH
 router.patch('/:id/comments/:commentId', postsCtrl.updateComment)
 
+// localhost:3000/posts/:id/toggleLike - PATCH
+router.patch('/:id/toggleLike', postsCtrl.toggleLike)
+
 // localhost:3000/posts/:id - DELETE
 router.delete('/:id', isLoggedIn, postsCtrl.delete)
 

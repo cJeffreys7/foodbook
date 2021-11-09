@@ -120,6 +120,24 @@ function updateComment(req, res) {
   })
 }
 
+function toggleLike(req, res) {
+  Post.findById(req.params.id)
+  .then(post => {
+    const foundId = post.likes.findIndex(like => like.toString().includes(req.user.profile._id))
+    if (foundId >= 0) {
+      post.likes.splice(foundId, 1)
+    } else {
+      post.likes.push(req.user.profile._id)
+    }
+    post.save()
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
 function deletePost(req, res) {
   Post.findByIdAndDelete(req.params.id)
   .then(() => {
@@ -158,6 +176,7 @@ export {
   createComment,
   update,
   updateComment,
+  toggleLike,
   deletePost as delete,
   deleteComment
 }
