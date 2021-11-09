@@ -44,12 +44,12 @@
       </div>
     </div>
     <div id="comment-actions">
-      <!-- <form action="/posts/<%# post._id %>/toggleLike?_method=PATCH" method="POST">  -->
-        <button class="edit-btn" type="submit">
+      <form action="/posts/<%= post._id %>/comments/<%= comment._id %>/toggleLike?_method=PATCH" method="POST">
+        <button class="edit-btn <%= (comment.likes.includes(user.profile._id)) ? "action-highlight" : "" %> " type="submit">
           <i class="fas fa-thumbs-up"></i>
           Like
         </button>
-      <!-- </form> -->
+      </form>
     </div>
   </section>
 </section>

@@ -14,7 +14,7 @@ router.get('/:id/favorites', isLoggedIn, postsCtrl.indexFavorites)
 router.get('/new', isLoggedIn, postsCtrl.new)
 
 // localhost:3000/posts/:id/edit - GET
-router.get('/:id/edit', postsCtrl.edit)
+router.get('/:id/edit', isLoggedIn, postsCtrl.edit)
 
 // localhost:3000/posts - POST
 router.post('/', isLoggedIn, postsCtrl.create)
@@ -26,16 +26,19 @@ router.post('/:id/comments', isLoggedIn, postsCtrl.createComment)
 router.patch('/:id', isLoggedIn, postsCtrl.update)
 
 // localhost:3000/posts/:id/comments/:commentId - PATCH
-router.patch('/:id/comments/:commentId', postsCtrl.updateComment)
+router.patch('/:id/comments/:commentId', isLoggedIn, postsCtrl.updateComment)
 
 // localhost:3000/posts/:id/toggleLike - PATCH
-router.patch('/:id/toggleLike', postsCtrl.toggleLike)
+router.patch('/:id/toggleLike', isLoggedIn, postsCtrl.toggleLike)
+
+// localhost:3000/posts/:id/comments/:commentId/toggleLike - PATCH
+router.patch('/:id/comments/:commentId/toggleLike', isLoggedIn, postsCtrl.toggleCommentLike)
 
 // localhost:3000/posts/:id - DELETE
 router.delete('/:id', isLoggedIn, postsCtrl.delete)
 
 // localhost:3000/posts/:id/comments/:commentId - DELETE
-router.delete('/:id/comments/:commentId', postsCtrl.deleteComment)
+router.delete('/:id/comments/:commentId', isLoggedIn, postsCtrl.deleteComment)
 
 export {
   router

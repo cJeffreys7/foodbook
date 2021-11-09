@@ -77,7 +77,6 @@ function createComment(req, res) {
     req.body.name = req.user.profile.name
     req.body.avatar = req.user.profile.avatar
     req.body.ownerId = req.user.profile._id
-    console.log('Comment content:', req.body)
     post.comments.push(req.body)
     post.save()
     res.redirect('/posts')
@@ -106,7 +105,6 @@ function updateComment(req, res) {
   .then(post => {
     const foundId = post.comments.findIndex(comment => comment.toString().includes(req.params.commentId))
     if (foundId >= 0) {
-      console.log('Found comment id:', foundId)
       post.comments[foundId].text = req.body.text
     } else {
       console.log('Unable to find comment id')
@@ -128,6 +126,30 @@ function toggleLike(req, res) {
       post.likes.splice(foundId, 1)
     } else {
       post.likes.push(req.user.profile._id)
+    }
+    post.save()
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect(`/profiles/${req.user.profile._id}`)
+  })
+}
+
+function toggleCommentLike(req, res) {
+  Post.findById(req.params.id)
+  .then(post => {
+    const foundId = post.comments.findIndex(comment => comment.toString().includes(req.params.commentId))
+    if (foundId >= 0) {
+      const foundLikeId = post.comments[foundId].likes.findIndex(like => like.toString().includes(req.user.profile._id))
+      if (foundLikeId >= 0) {
+        post.comments[foundId].likes[foundLikeId].splice(foundLikeId, 1)
+      } else {
+        post.comments[foundId].likes.push(req.user.profile._id)
+      }
+      post.comments[foundId].text = req.body.text
+    } else {
+      console.log('Unable to find comment id')
     }
     post.save()
     res.redirect(`/profiles/${req.user.profile._id}`)
@@ -177,6 +199,7 @@ export {
   update,
   updateComment,
   toggleLike,
+  toggleCommentLike,
   deletePost as delete,
   deleteComment
 }
