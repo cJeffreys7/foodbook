@@ -71,11 +71,14 @@ function toggleFavorite(req, res) {
     .then(() => {
       Post.findById(req.body.postId)
       .then(post => {
-        post.favorites.push(req.user.profile._id)
+        const foundPostFavId = post.favorites.findIndex(favorite => favorite.toString().includes(req.user.profile._id))
+        if (foundPostFavId >= 0) {
+          post.favorites.splice(foundPostFavId, 1)
+        } else {
+          post.favorites.push(req.user.profile._id)
+        }
         post.save()
-        .then(() => {
-          res.redirect(`/profiles/${req.body.profileId}`)
-        })
+        res.status(204).send()
       })
     })
   })

@@ -33,7 +33,7 @@
     <div id="post-actions">
       <div>
         <form action="/posts/<%= post._id %>/toggleLike?_method=PATCH" method="POST">
-          <button class="post-action-btn <%= (post.likes.includes(user.profile._id)) ? "action-highlight" : "" %>">
+          <button id="like-post-<% postIdx %>-btn" class="post-action-btn like-post-btn <%= (post.likes.includes(user.profile._id)) ? "action-highlight" : "" %>">
             <i class="fas fa-thumbs-up"></i>
             Like
           </button>
@@ -48,7 +48,7 @@
       <div>
         <form action="/profiles/<%= user.profile._id %>/toggleFavorite?_method=PATCH" method="POST">
           <input type="hidden" name="postId" value="<%= post._id %>">
-          <button class="btn  post-action-btn <%= (post.favorites.includes(user.profile._id)) ? "action-highlight" : "" %>" type="submit">
+          <button id="favorite-post-<%= postIdx %>-btn" class="btn  post-action-btn favorite-post-btn <%= (post.favorites.includes(user.profile._id)) ? "action-highlight" : "" %>" type="submit">
             <i class="fas fa-star"></i>
             Favorite
           </button>
