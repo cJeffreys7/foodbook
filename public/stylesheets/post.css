@@ -1,8 +1,9 @@
 article {
   width: 100%;
   margin: 4px 24px;
-  background-color: #d5d5d5;
+  background-color: white;
   border: 1px black solid;
+  border-radius: 8px;
 }
 
 #post-header {
@@ -19,6 +20,23 @@ article {
   width: 48px;
 }
 
+#post-info {
+  margin-left: 12px;
+}
+
+#post-info > div {
+  font-size: 1.2rem;
+}
+
+#post-owner {
+  margin-top: 6px;
+}
+
+#post-timestamp {
+  margin-top: 4px;
+  color: gray;
+}
+
 #edit-link {
   position: absolute;
   right: 8px;
@@ -27,7 +45,7 @@ article {
 
 article > section {
   margin: 12px 48px;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 
 footer {
@@ -39,8 +57,16 @@ footer > div {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: white;
-  border: 1px gray solid;
   font-size: 1.2rem;
-  height: 24px;
+  height: 32px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#post-stats {
+  border: 1px gray solid;
+}
+
+.post-action-btn {
+  font-size: 1.5rem;
 }

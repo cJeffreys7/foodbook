@@ -1,53 +1,53 @@
-<header class="comment-header" id="comment-<%= idx %>-header" style="display: contents;">
-  <a href="profiles/<%= comment.ownerId %>">
-    <img
-      id="avatar-img"
-      src="<%= comment.avatar %>"
-      alt="<%= comment.name %> avatar"
-    >
-  </a>
-  <div id="comment-info">
-    <div>
-      <%= comment.name %>
-    </div>
-    <div>
-      <%= comment.createdAt.toLocaleDateString() + " at " + comment.createdAt.toLocaleTimeString().slice(0, -6) + comment.createdAt.toLocaleTimeString().slice(-3) %> 
-    </div>
-  </div>
-</header>
-<% if (comment.ownerId === user.profile._id.toString()) { %>
-  <button id="edit-comment-btn-<%= idx %>" class="edit-comment-btn">Edit</button>
-<% } %>
-<section>
-  <div id="comment-<%= idx %>-text" style="display: contents;">
-    <%= comment.text %>
-  </div>
-  <div id="edit-comment-<%= idx %>-text" style="display: none;">
-    <form action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PATCH" method="POST">
+<section id="comment-<%= idx %>">
+  <header class="comment-header" id="comment-<%= idx %>-header" style="display: flex;">
+    <a href="profiles/<%= comment.ownerId %>">
       <img
-        id="blank-comment-avatar-img"
-        src="<%= user.profile.avatar %>"
-        alt="<%= user.profile.name %> avatar"
+        id="avatar-img"
+        src="<%= comment.avatar %>"
+        alt="<%= comment.name %> avatar"
       >
-      <textarea id="comment-text" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none" rows="2">
+    </a>
+    <div id="comment-info">
+      <div id="comment-owner">
+        <%= comment.name %>
+      </div>
+      <div id="comment-timestamp">
+        <%= comment.createdAt.toLocaleDateString() + " at " + comment.createdAt.toLocaleTimeString().slice(0, -6) + comment.createdAt.toLocaleTimeString().slice(-3) %> 
+      </div>
+    </div>
+  </header>
+  <section id="comment-body">
+    <div id="comment-text-body">
+      <div id="comment-<%= idx %>-text" style="display: contents;">
         <%= comment.text %>
-      </textarea>
-      <button id="comment-btn" type="submit">
-        Submit
-      </button>
-    </form>
-    <button id="cancel-edit-comment-btn-<%= idx %>" class="cancel-edit-comment-btn">
-      Cancel
-    </button>
-    <form action="/posts/<%= post._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-      <button type="submit">
-        Delete
-      </button>
-    </form>
-  </div>
+        <% if (comment.ownerId === user.profile._id.toString()) { %>
+          <button id="edit-comment-btn-<%= idx %>" class="edit-comment-btn">Edit</button>
+        <% } %>
+      </div>
+      <div id="edit-comment-<%= idx %>-text" class="edit-comment-body" style="display: none;">
+        <form id="edit-text-form" action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PATCH" method="POST">
+          <textarea id="edit-text-area" class="comment-text" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>
+            <%= comment.text %>
+          </textarea>
+          <button id="comment-btn" class="edit-btn" type="submit">
+            Submit
+          </button>
+        </form>
+        <button id="cancel-edit-comment-btn-<%= idx %>" class="cancel-edit-comment-btn edit-btn">
+          Cancel
+        </button>
+        <form action="/posts/<%= post._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+          <button class="edit-btn" type="submit">
+            Delete
+          </button>
+        </form>
+      </div>
+    </div>
+    <div id="comment-actions">
+      <div>
+        <i class="fas fa-thumbs-up"></i>
+        Like
+      </div>
+    </div>
+  </section>
 </section>
-<div id="comment-actions">
-  <div>
-    <i class="fas fa-thumbs-up"></i>
-    Like
-  </div>

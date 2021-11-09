@@ -1,9 +1,9 @@
 <%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
 <link rel="stylesheet" href="/stylesheets/posts/index.css">
 <link rel="stylesheet" href="/stylesheets/comment.css">
 <link rel="stylesheet" href="/stylesheets/post.css">
 <script src="https://kit.fontawesome.com/73eb34af13.js" crossorigin="anonymous"></script>
-<%- include('../partials/nav') %>
 
 <main>
   <% posts.forEach(function(post, idx) { %>
@@ -44,8 +44,7 @@
   }
 
   function toggleEditComment(commentIdx, isEditing) {
-    document.getElementById(`comment-${commentIdx}-header`).style.display = isEditing ? "none" : "contents"
-    document.getElementById(`edit-comment-btn-${commentIdx}`).style.display = isEditing ? "none" : "contents"
+    document.getElementById(`edit-comment-btn-${commentIdx}`).style.display = isEditing ? "none" : "flex"
     document.getElementById(`comment-${commentIdx}-text`).style.display = isEditing ? "none" : "contents"
     document.getElementById(`edit-comment-${commentIdx}-text`).style.display = isEditing ? "contents" : "none"
   }

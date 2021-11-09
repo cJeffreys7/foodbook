@@ -77,8 +77,7 @@
   }
 
   function toggleEditComment(commentIdx, isEditing) {
-    document.getElementById(`comment-${commentIdx}-header`).style.display = isEditing ? "none" : "contents"
-    document.getElementById(`edit-comment-btn-${commentIdx}`).style.display = isEditing ? "none" : "contents"
+    document.getElementById(`edit-comment-btn-${commentIdx}`).style.display = isEditing ? "none" : "flex"
     document.getElementById(`comment-${commentIdx}-text`).style.display = isEditing ? "none" : "contents"
     document.getElementById(`edit-comment-${commentIdx}-text`).style.display = isEditing ? "contents" : "none"
   }

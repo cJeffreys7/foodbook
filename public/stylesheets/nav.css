@@ -1,19 +1,28 @@
+body {
+  --icon-normal: #B36133;
+  --link-bg: #FFCB97;
+}
+
 nav {
   position: fixed;
   width: 100%;
   display: flex;
   justify-content: space-around;
+  background-color: var(--link-bg);
+  padding-top: 12px;
+  padding-bottom: 12px;
 }
 
 button {
   background: none;
   border: none;
   padding: 0;
-  color:#2e9ea4;
-  font-size: 1.7rem;
+  color:var(--icon-normal);
+  font-size: 2.3rem;
 }
 
 a {
   text-decoration: none;
-  color:#2e9ea4;
+  color:var(--icon-normal);
+  font-size: 2.1rem;
 }

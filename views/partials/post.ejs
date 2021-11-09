@@ -8,10 +8,10 @@
       >
     </a>
     <div id="post-info">
-      <div>
+      <div id="post-owner">
         <%= post.owner.name %>
       </div>
-      <div>
+      <div id="post-timestamp">
         <%= post.createdAt.toLocaleDateString() + " at " + post.createdAt.toLocaleTimeString().slice(0, -6) + post.createdAt.toLocaleTimeString().slice(-3) %> 
       </div>
     </div>
@@ -30,11 +30,13 @@
     </div>
     <div id="post-actions">
       <div>
-        <i class="fas fa-thumbs-up"></i>
-        Like
+        <button class="post-action-btn">
+          <i class="fas fa-thumbs-up"></i>
+          Like
+        </button>
       </div>
       <div>
-        <button id="comment-btn-<%= idx %>" class="comment-btn">
+        <button id="comment-btn-<%= idx %>" class="comment-btn post-action-btn">
           <i class="fas fa-comment"></i>
           Comment
         </button>
@@ -42,7 +44,7 @@
       <div>
         <form action="/profiles/<%= user.profile._id %>/toggleFavorite?_method=PATCH" method="POST">
           <input type="hidden" name="postId" value="<%= post._id %>">
-          <button class="btn" type="submit">
+          <button class="btn  post-action-btn" type="submit">
             <i class="fas fa-star"></i>
             Favorite
           </button>
@@ -57,7 +59,7 @@
             src="<%= user.profile.avatar %>"
             alt="<%= user.profile.name %> avatar"
           >
-          <textarea id="comment-text" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none" rows="2" placeholder="Add a comment..."></textarea>
+          <textarea class="comment-text" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none" rows="2" placeholder="Add a comment..."></textarea>
           <button id="comment-btn" type="submit">
             Submit
           </button>

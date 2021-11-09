@@ -1,3 +1,8 @@
+body {
+  --icon-normal: #B36133;
+  --comment-bg: #FFCB97;
+}
+
 #blank-comment {
   display: flex;
   flex-direction: column;
@@ -22,7 +27,62 @@
   margin-left: 12px;
 }
 
-#comment-text {
+#comment-info {
+  margin-left: 12px;
+}
+
+#comment-info > div {
+  font-size: 1.2 rem;
+}
+
+#comment-owner {
+  margin-top: 6px;
+}
+
+#comment-timestamp {
+  margin-top: 4px;
+  color: gray;
+}
+
+#comment-body {
+  display: flex;
+  flex-direction: column;
+  margin-left: 64px;
+  margin-bottom: 8px;
+}
+
+#comment-text-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  background-color: var(--comment-bg);
+  margin-right: 32px;
+  padding: 16px;
+  border-radius: 8px;
+  font-size: 1.4rem;
+}
+
+.edit-comment-body {
+  display: flex;
+}
+
+.edit-btn, #comment-btn {
+  font-size: 1.4rem;
+}
+
+#edit-text-area {
+  background-color: var(--comment-bg);
+}
+
+#edit-text-form {
+  height: fit-content;
+}
+
+.edit-comment-btn {
+  font-size: 1rem;
+}
+
+.comment-text {
   border: none;
   outline: none;
   width: 100%;
@@ -32,4 +92,10 @@
 
 #comment-btn {
   width: 100%;
+}
+
+#comment-actions {
+  margin-top: 4px;
+  margin-left: 8px;
+  color: var(--icon-normal);
 }

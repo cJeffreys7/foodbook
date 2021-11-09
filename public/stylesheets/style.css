@@ -1,3 +1,9 @@
+/* Color Scheme - Skip Gradient */
+/* #7D9A3D */
+/* #FFCB97 */
+/* #F09563 */
+/* #B36133 */
+
 html {
   box-sizing: border-box
 }
@@ -41,4 +47,20 @@ main {
 
 h1 {
   font-size: 3.6rem;
+}
+
+.siwg-link {
+  position: absolute;
+  right: 8px;
+  top: 8px;
+}
+
+#foodbook-logo {
+  position: absolute;
+  left:8px;
+  top: 16px;
+}
+
+#splash-bg {
+  width: 100%;
 }

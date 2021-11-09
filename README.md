@@ -58,6 +58,7 @@
 ## Attributions:
 
 * Icons from [FontAwesome](https://fontawesome.com/)
+* Images from [Freepik](): Vectors from [pch.vector](https://www.freepik.com/pch-vector)
 
 ## Next Steps
 
