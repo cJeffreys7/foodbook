@@ -17,8 +17,9 @@ likeCommentBtns.forEach(btn => {
 })
 
 function showComments(evt) {
+  console.log('Show comments')
   let postIdx = evt.target.id.slice(-1)
-  document.getElementById(`post-${postIdx}-comments`).style.display = "contents"
+  document.getElementById(`post-${postIdx}-comments-section`).style.display = "contents"
 }
 
 function editComment(evt) {

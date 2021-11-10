@@ -18,21 +18,22 @@ function init() {
   setStatVisibility(postLikeStats)
   setStatVisibility(postCommentStats)
   setStatVisibility(postFavoriteStats)
-  postStats.forEach((statBar, idx) => setPostStatsVisibility(statBar, idx))
+  postStats.forEach((statBar, idx) => setPostStatsVisibility(idx))
 }
 
-function setPostStatsVisibility(statBar, postIdx) {
-  const postStatBar = statBar
+function setPostStatsVisibility(postIdx) {
+  const statBar = document.getElementById(`post-${postIdx}-stats`)
   const postLikeCount = parseInt(document.getElementById(`post-${postIdx}-like-count`).textContent)
   const postCommentCount = parseInt(document.getElementById(`post-${postIdx}-comment-count`).textContent)
   const postFavoriteCount = parseInt(document.getElementById(`post-${postIdx}-favorite-count`).textContent)
-  if (postStatBar.classList.contains("removed-stat")) {
+  console.log(postLikeCount, 'likes, ', postCommentCount, 'comments, ', postFavoriteCount, 'favorites on post ', postIdx, statBar)
+  if (statBar.classList.contains("removed-stat")) {
     if (postLikeCount || postCommentCount || postFavoriteCount) {
-      postStatBar.classList.remove("removed-stat")
+      statBar.classList.remove("removed-stat")
     }
   } else {
     if (!(postLikeCount || postCommentCount || postFavoriteCount)) {
-      postStatBar.classList.add("removed-stat")
+      statBar.classList.add("removed-stat")
     }
   }
 }

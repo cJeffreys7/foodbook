@@ -55,6 +55,7 @@ function edit(req, res) {
 }
 
 function create(req, res) {
+  // console.log(req.file)
   req.body.owner = req.user.profile._id
   Post.create(req.body)
   .then(post => {
