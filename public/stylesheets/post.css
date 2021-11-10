@@ -79,8 +79,10 @@ footer > div {
   padding-bottom: 4px;
 }
 
-#post-stats {
-  border: 1px gray solid;
+.post-stats {
+  border-bottom: 1px lightgray solid;
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 .post-action-btn {
@@ -89,4 +91,12 @@ footer > div {
 
 .action-highlight {
   color: var(--nav-link)
+}
+
+.hidden-stat {
+  visibility: hidden;
+}
+
+.removed-stat {
+  display: none;
 }
