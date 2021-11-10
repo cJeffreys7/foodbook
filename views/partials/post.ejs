@@ -15,9 +15,28 @@
         <%= post.createdAt.toLocaleDateString() + " at " + post.createdAt.toLocaleTimeString().slice(0, -6) + post.createdAt.toLocaleTimeString().slice(-3) %> 
       </div>
     </div>
-    <div id="edit-link-wrapper">
+    <div id="post-header-spacer"></div>
+    <div id="edit-post-wrapper">
       <% if (post.owner._id.toString() === user.profile._id.toString()) { %>
-        <a id="edit-link" href="/posts/<%= post._id %>/edit">Edit</a>
+        <div class="dropdown">
+          <a id="post-edit-dropdown" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            ...
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li>
+              <a class="dropdown-item" href="/posts/<%= post._id %>/edit">
+                <i class="fas fa-pen"></i> Edit Post
+              </a>
+            </li>
+            <li>
+              <form class="dropdown-item" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                <button id="delete-btn" class="edit-dropdown-btn" type="submit">
+                  <i class="fas fa-trash-alt"></i> Delete Post
+                </button>
+              </form>
+            </li>
+          </ul>
+        </div>
       <% } %>
     </div>
   </header>
@@ -33,14 +52,14 @@
     <div id="post-actions">
       <div>
         <form action="/posts/<%= post._id %>/toggleLike?_method=PATCH" method="POST">
-          <button id="like-post-<% postIdx %>-btn" class="post-action-btn like-post-btn <%= (post.likes.includes(user.profile._id)) ? "action-highlight" : "" %>">
+          <button id="like-post-<%= postIdx %>-btn" class="post-action-btn like-post-btn <%= (post.likes.includes(user.profile._id)) ? "action-highlight" : "" %>">
             <i class="fas fa-thumbs-up"></i>
             Like
           </button>
         </form>
       </div>
       <div>
-        <button id="comment-btn-<%= postIdx %>" class="comment-btn post-action-btn <%= (post.comments.some(comment => comment.ownerId === user.profile._id.toString())) ? "action-highlight" : "" %>">
+        <button id="comment-btn-<%= postIdx %>" class="post-action-btn comment-btn  <%= (post.comments.some(comment => comment.ownerId === user.profile._id.toString())) ? "action-highlight" : "" %>">
           <i class="fas fa-comment"></i>
           Comment
         </button>
@@ -48,7 +67,7 @@
       <div>
         <form action="/profiles/<%= user.profile._id %>/toggleFavorite?_method=PATCH" method="POST">
           <input type="hidden" name="postId" value="<%= post._id %>">
-          <button id="favorite-post-<%= postIdx %>-btn" class="btn  post-action-btn favorite-post-btn <%= (post.favorites.includes(user.profile._id)) ? "action-highlight" : "" %>" type="submit">
+          <button id="favorite-post-<%= postIdx %>-btn" class="post-action-btn favorite-post-btn <%= (post.favorites.includes(user.profile._id)) ? "action-highlight" : "" %>" type="submit">
             <i class="fas fa-star"></i>
             Favorite
           </button>

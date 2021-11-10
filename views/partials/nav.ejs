@@ -7,32 +7,32 @@
     <% if (user) { %>
       <link rel="stylesheet" href="/stylesheets/nav.css">
       <script src="https://kit.fontawesome.com/73eb34af13.js" crossorigin="anonymous"></script>
-      <a class="<%= nav === "newsfeed" ? "active-nav" : "" %> nav-link" href="/posts">
+      <a class="<%= nav === "newsfeed" ? "active-nav" : "" %> nav-icon-link" href="/posts">
         <button type="submit">
           <i class="fas fa-newspaper"></i>
         </button>
       </a>
-      <a class="nav-link" href="/posts/new">
-        <button class="btn" type="submit">
+      <a class="nav-icon-link" href="/posts/new">
+        <button type="submit">
           <i class="fas fa-pen"></i>
         </button>
       </a>
-      <a class="<%= nav === "followedProfiles" ? "active-nav" : "" %> nav-link" href="/profiles">
-        <button class="btn" type="submit">
+      <a class="<%= nav === "followedProfiles" ? "active-nav" : "" %> nav-icon-link" href="/profiles">
+        <button type="submit">
           <i class="fas fa-users"></i>
         </button>
       </a>
-      <a class="<%= nav === "favorites" ? "active-nav" : "" %> nav-link" href="/posts/<%= user.profile._id %>/favorites">
-        <button class="btn" type="submit">
+      <a class="<%= nav === "favorites" ? "active-nav" : "" %> nav-icon-link" href="/posts/<%= user.profile._id %>/favorites">
+        <button type="submit">
           <i class="fas fa-star"></i>
         </button>
       </a>
-      <a class="<%= nav === "selfProfile" ? "active-nav" : "" %> nav-link" href="/profiles/<%= user.profile._id %>">
+      <a class="<%= nav === "selfProfile" ? "active-nav" : "" %> nav-icon-link" href="/profiles/<%= user.profile._id %>">
         <button type="submit">
           <i class="fas fa-user"></i>
         </button>
       </a>
-      <a class="nav-link" href="/auth/logout">
+      <a class="nav-icon-link" href="/auth/logout">
         <button type="submit">
           <i class="fas fa-door-open"></i>
         </button>

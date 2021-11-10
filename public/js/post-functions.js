@@ -9,6 +9,7 @@ favPostBtns.forEach(btn => {
 })
 
 function togglePostLike(evt) {
+  console.log(evt.target.id)
   let elementIdArr = evt.target.id.split('-')
   let postIdx = elementIdArr[2]
   document.getElementById(`like-post-${postIdx}-btn`).classList.toggle("action-highlight")

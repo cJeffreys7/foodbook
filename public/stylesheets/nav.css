@@ -17,11 +17,11 @@ button {
   background: none;
   border: none;
   padding: 0;
-  /* color: var(--main-accent); */
-  font-size: 2.3rem;
+  /* color: var(--nav-link); */
+  font-size: 2.3rem  !important;
 }
   
-.nav-link {
+.nav-icon-link {
   display: flex;
   justify-content: center;
   text-decoration: none;

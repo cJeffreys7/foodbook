@@ -43,16 +43,20 @@ article {
   color: gray;
 }
 
-#edit-link-wrapper {
+#post-header-spacer {
   flex-grow: 1;
 }
 
-#edit-link {
+#post-edit-dropdown {
   display: flex;
   justify-content: flex-end;
   text-decoration: none;
   color: var(--nav-link);
   font-size: 2.1rem;
+}
+
+.edit-dropdown-btn {
+  font-size: 1rem !important;
 }
 
 article > section {
@@ -80,7 +84,7 @@ footer > div {
 }
 
 .post-action-btn {
-  font-size: 1.5rem;
+  font-size: 1.5rem !important;
 }
 
 .action-highlight {

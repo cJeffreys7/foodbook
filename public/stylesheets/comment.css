@@ -67,7 +67,7 @@ body {
 }
 
 .edit-btn, #comment-btn {
-  font-size: 1.4rem;
+  font-size: 1.4rem !important;
 }
 
 #edit-text-area {
@@ -79,7 +79,7 @@ body {
 }
 
 .edit-comment-btn {
-  font-size: 1rem;
+  font-size: 1rem !important;
 }
 
 .comment-text {
