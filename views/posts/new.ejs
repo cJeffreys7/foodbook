@@ -22,52 +22,45 @@
         <div><%= user.profile.name %></div>
       </header>
       <textarea id="text-input" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none" placeholder="What's new in the food world, <%= user.profile.name %>?"></textarea>
+      <img src="" class="preview">
     </main>
   </form>
-  <form class="mt-4"
-    action="/posts/upload"
-    method="POST"
-    enctype="multipart/form-data"
-  >
-    <div class="form-group">
-      <input
+  <!-- <form action="/posts/upload" method="post">
+    <input
         type="file"
         name="file"
-        id="input-files"
-        class="form-control-file border"
+        accept="image/png, image/jpeg"
       />
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>      
-  <div class="preview-images"></div>
-
-  <form action="/posts/files/1636650986990-FBLoginScreen.png" method="get">
-    <button type="submit">Get Files</button>
-  </form>
+      <button type="submit">Add Photo</button>
+  </form> -->
 
 <%- include('../partials/footer') %>
 
-<script>
-  const fileInput = document.querySelector("#input-files")
-  const filePreviewEl = document.querySelector(".preview-images")
+<!-- <script>
+  const fileInput = document.querySelector('input[type="file"]')
+  const preview = document.querySelector('img.preview')
 
-  fileInput.addEventListener("change", imagesPreview(this, filePreviewEl))
+  const reader = new FileReader()
 
-  function imagesPreview(input, imagePreviewElement) {
-    console.log('Show preview image')
-    console.log('Input:', input.files)
-    if (input.files) {
-      let filesAmount = input.files.length
-      for (let i = 0; i < filesAmount; i++) {
-        let reader = new FileReader()
-        reader.onload = function(evt) {
-          let imagePreview = document.createElement("img")
-          imagePreview.setAttribute("src", evt.target.result)
-          imagePreviewElement.appendChild(imagePreview)
-        }
-        reader.readAsDataURL(input.files[i])
-        console.log('Read file:', input.files[i])
+  function handleEvent(event) {
+      console.log(`${event.type}: ${event.loaded} bytes transferred\n`)
+
+      if (event.type === "load") {
+          preview.src = reader.result
       }
-    }
   }
-</script>
+
+  function addListeners(reader) {
+      reader.addEventListener('load', handleEvent)
+  }
+
+  function handleSelected(e) {
+      const selectedFile = fileInput.files[0]
+      if (selectedFile) {
+          addListeners(reader)
+          reader.readAsDataURL(selectedFile)
+      }
+  }
+
+  fileInput.addEventListener('change', handleSelected)
+</script> -->

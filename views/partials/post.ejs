@@ -19,7 +19,7 @@
     <div id="edit-post-wrapper">
       <% if (post.owner._id.toString() === user.profile._id.toString()) { %>
         <div class="dropdown">
-          <a id="post-edit-dropdown" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+          <a id="post-edit-dropdown" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false"> 
             ...
           </a>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
@@ -45,7 +45,6 @@
   </section>
   <footer>
     <div id="post-<%= postIdx %>-stats" class="post-stats">
-      <!-- <div class="post-stats-bar"></div> -->
       <div class="post-likes-stat hidden-stat" id="post-<%= postIdx %>-likes" data-count="<%= post.likes.length %>">
         <i class="fas fa-thumbs-up"></i>
         <div id="post-<%= postIdx %>-like-count" style="display: inline;">
@@ -92,16 +91,18 @@
     </div>
     <section id="post-<%= postIdx %>-comments-section" class="post-comments" style="display: none;">
       <div id="blank-comment">
+        <img
+          id="blank-comment-avatar-img"
+          src="<%= user.profile.avatar %>"
+          alt="<%= user.profile.name %> avatar"
+        >
         <form action="/posts/<%= post._id %>/comments" method="POST">
-          <img
-            id="blank-comment-avatar-img"
-            src="<%= user.profile.avatar %>"
-            alt="<%= user.profile.name %> avatar"
-          >
           <textarea class="comment-text" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none" rows="2" placeholder="Add a comment..."></textarea>
-          <button id="comment-btn" type="submit">
-            Submit
-          </button>
+          <div id="blank-comment-submit-btn">
+            <button type="submit">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
       <% post.comments.forEach(function(comment, commentIdx) { %>

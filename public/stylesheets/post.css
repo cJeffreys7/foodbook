@@ -93,6 +93,34 @@ footer > div {
   color: var(--nav-link)
 }
 
+#blank-comment {
+  display: flex;
+  justify-content: flex-start;
+  background-color: white;
+  height: fit-content;
+}
+
+#blank-comment-avatar-img {
+  position: absolute;
+  margin-top: 8px;
+  margin-left: 8px;
+  border-radius: 50%;
+  width: 48px;
+}
+
+#blank-comment-submit-btn {
+  display: flex;
+  justify-content: center;
+}
+
+#blank-comment-submit-btn
+> button {
+  font-size: 1.4rem !important;
+  background-color: var(--nav-link);
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 4px;
+}
 .hidden-stat {
   visibility: hidden;
 }

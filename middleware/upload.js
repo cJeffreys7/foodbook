@@ -8,20 +8,20 @@ let storage = new GridFsStorage({
   file: (req, file) => {
     const match = ["image/png", "image/jpeg"]
     if (match.indexOf(file.mimetype) === -1) {
-      const filename = `${Date.now()}-${file.originalname}`
+      const filename = `${file.originalname}`
       return filename
     }
 
     return {
       bucketName: 'uploads',
-      filename: `${Date.now()}-${file.originalname}`
+      filename: `${file.originalname}`
     }
   }
 })
 
 let uploadFiles = multer({ storage: storage }).single("file")
-let uploadFilesMiddleware = util.promisify(uploadFiles)
+let upload = util.promisify(uploadFiles)
 
 export {
-  uploadFilesMiddleware as upload
+  upload
 }

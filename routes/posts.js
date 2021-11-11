@@ -19,12 +19,12 @@ router.get('/:id/edit', isLoggedIn, postsCtrl.edit)
 // localhost:3000/posts - POST
 router.post('/', isLoggedIn, postsCtrl.create)
 
-// localhost:3000/posts/upload - POST
-router.post('/upload', isLoggedIn, postsCtrl.uploadFiles)
+// Routes for file uploads and downloads
+// router.post('/upload', isLoggedIn, postsCtrl.uploadFiles)
 
-router.get('/files', isLoggedIn, postsCtrl.getListFiles)
+// router.get('/files', isLoggedIn, postsCtrl.getListFiles)
 
-router.get('/files/:name', isLoggedIn, postsCtrl.download)
+// router.get('/files/:name', isLoggedIn, postsCtrl.download)
 
 // localhost:3000/posts/:id/comments - POST
 router.post('/:id/comments', isLoggedIn, postsCtrl.createComment)

@@ -1,4 +1,4 @@
-<section id="comment-<%= commentIdx %>">
+<section id="comment-<%= commentIdx %>" class="comment">
   <header class="comment-header" id="comment-<%= commentIdx %>-header" style="display: flex;">
     <a href="profiles/<%= comment.ownerId %>">
       <img
@@ -18,34 +18,49 @@
   </header>
   <section id="comment-body">
     <div id="comment-text-body">
-      <div id="comment-<%= commentIdx %>-text" style="display: contents;">
-        <%= comment.text %>
-        <% if (comment.ownerId === user.profile._id.toString()) { %>
-          <button id="edit-comment-btn-<%= commentIdx %>" class="edit-comment-btn">Edit</button>
-        <% } %>
-      </div>
-      <div id="edit-comment-<%= commentIdx %>-text" class="edit-comment-body" style="display: none;">
-        <form id="edit-text-form" action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PATCH" method="POST">
-          <textarea id="edit-text-area" class="comment-text" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'>
-            <%= comment.text %>
-          </textarea>
+      <form id="edit-text-form" action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PATCH" method="POST">
+        <textarea 
+          id="post-<%= postIdx %>-comment-<%= commentIdx %>-text"
+          class="user-comment-text post-<%= postIdx %>-comment"
+          name="text"
+          rows="1"
+          oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"'
+          readonly
+        ><%= comment.text %></textarea>
+        <div id="edit-post-<%= postIdx %>-comment-<%= commentIdx %>-text" class="edit-comment-body hidden-btn">
           <button id="comment-btn" class="edit-btn" type="submit">
             Submit
           </button>
-        </form>
-        <button id="cancel-edit-comment-btn-<%= commentIdx %>" class="cancel-edit-comment-btn edit-btn">
-          Cancel
-        </button>
-        <form action="/posts/<%= post._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">
-          <button class="edit-btn" type="submit">
-            Delete
+          <button id="cancel-edit-post-<%= postIdx %>-comment-btn-<%= commentIdx %>" class="cancel-edit-comment-btn edit-btn" type="button">
+            Cancel
           </button>
-        </form>
-      </div>
+        </div>
+      </form>
+      <% if (comment.ownerId === user.profile._id.toString()) { %>
+        <div class="dropdown comment-edit-dropdown">
+          <button id="post-<%= postIdx %>-comment-<%= commentIdx %>-edit-dropdown" class="edit-comment-dropdown" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+            ...
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <li>
+              <button id="edit-post-<%= postIdx %>-comment-btn-<%= commentIdx %>" class="dropdown-item edit-comment-btn">
+                <i class="fas fa-pen"></i> Edit Comment
+              </button>
+            </li>
+            <li>
+              <form class="dropdown-item" action="/posts/<%= post._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                <button class="edit-comment-btn" type="submit">
+                  <i class="fas fa-trash-alt"></i> Delete Comment
+                </button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      <% } %>
     </div>
     <div id="comment-actions">
       <form action="/posts/<%= post._id %>/comments/<%= comment._id %>/toggleLike?_method=PATCH" method="POST">
-        <button id="post-<%= postIdx %>-like-comment-<%= commentIdx %>-btn" class="edit-btn like-btn <%= (comment.likes.includes(user.profile._id)) ? "action-highlight" : "" %>" type="submit">
+        <button id="post-<%= postIdx %>-like-comment-<%= commentIdx %>-btn" class="like-btn <%= (comment.likes.includes(user.profile._id)) ? "action-highlight" : "" %>" type="submit">
           <i class="fas fa-thumbs-up"></i>
           Like
         </button>

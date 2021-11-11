@@ -67,7 +67,7 @@ function edit(req, res) {
 }
 
 function create(req, res) {
-  console.log('File:', req.body)
+  console.log('Req:', req.body)
   req.body.owner = req.user.profile._id
   Post.create(req.body)
   .then(post => {
@@ -84,78 +84,78 @@ function create(req, res) {
   })
 }
 
-async function uploadFiles(req, res) {
-  try {
-    await upload(req, res)
-    console.log("Uploaded file", req.file)
-    if (req.file === undefined) {
-      res.send({
-        message: "You must select a file."
-      })
-    }
-    res.send({
-      message: "File has been uploaded."
-    })
-  } catch (error) {
-    console.log("Error:", error)
-    res.send({
-      message: `Error when trying to upload image: ${error}`
-    })
-  }
-}
+// async function uploadFiles(req, res) {
+//   try {
+//     await upload(req, res)
+//     console.log("Uploaded file", req.file)
+//     if (req.file === undefined) {
+//       res.send({
+//         message: "You must select a file."
+//       })
+//     }
+//     res.send({
+//       message: "File has been uploaded."
+//     })
+//   } catch (error) {
+//     console.log("Error:", error)
+//     res.send({
+//       message: `Error when trying to upload image: ${error}`
+//     })
+//   }
+// }
 
-async function getListFiles(req, res) {
-  try {
-    await mongoClient.connect()
-    const database = mongoClient.db(dbConfig.database)
-    const images = database.collection("uploads.files")
-    const cursor = images.find({})
-    if ((await cursor.count()) === 0) {
-      res.status(500).send({
-        message: "No files found!"
-      })
-    }
-    let fileInfos = []
-    await cursor.forEach(doc => {
-      fileInfos.push({
-        name: doc.filename,
-        url: baseUrl + doc.filename
-      })
-    })
-    console.log('Files:', fileInfos)
-    res.status(200).send(fileInfos)
-  } catch (error) {
-    res.status(500).send({
-      message: error.message
-    })
-  }
-}
+// async function getListFiles(req, res) {
+//   try {
+//     await mongoClient.connect()
+//     const database = mongoClient.db(dbConfig.database)
+//     const images = database.collection("uploads.files")
+//     const cursor = images.find({})
+//     if ((await cursor.count()) === 0) {
+//       res.status(500).send({
+//         message: "No files found!"
+//       })
+//     }
+//     let fileInfos = []
+//     await cursor.forEach(doc => {
+//       fileInfos.push({
+//         name: doc.filename,
+//         url: baseUrl + doc.filename
+//       })
+//     })
+//     console.log('Files:', fileInfos)
+//     res.status(200).send(fileInfos)
+//   } catch (error) {
+//     res.status(500).send({
+//       message: error.message
+//     })
+//   }
+// }
 
-async function download(req, res) {
-  try {
-    await mongoClient.connect()
-    const database = mongoClient.db(dbConfig.database)
-    const bucket = new GridFSBucket(database, {
-      bucketName: 'uploads'
-    })
-    let downloadStream = bucket.openDownloadStreamByName(req.params.name)
-    downloadStream.on("data", function(data) {
-      res.status(200).write(data)
-    })
-    downloadStream.on("error", function(err) {
-      res.status(404).send({
-        message: "Cannot download the Image!"
-      })
-    })
-    downloadStream.on("end", () => {
-      res.end()
-    })
-  } catch (error) {
-    res.status(500).send({
-      message: error.message
-    })
-  }
-}
+// async function download(req, res) {
+//   try {
+//     await mongoClient.connect()
+//     const database = mongoClient.db(dbConfig.database)
+//     const bucket = new GridFSBucket(database, {
+//       bucketName: 'uploads'
+//     })
+//     let downloadStream = bucket.openDownloadStreamByName(req.params.name)
+//     downloadStream.on("data", function(data) {
+//       res.status(200).write(data)
+//     })
+//     downloadStream.on("error", function(err) {
+//       res.status(404).send({
+//         message: "Cannot download the Image!"
+//       })
+//     })
+//     downloadStream.on("end", () => {
+//       res.end()
+//     })
+//   } catch (error) {
+//     res.status(500).send({
+//       message: error.message
+//     })
+//   }
+// }
 
 function createComment(req, res) {
   Post.findById(req.params.id)
@@ -163,6 +163,7 @@ function createComment(req, res) {
     req.body.name = req.user.profile.name
     req.body.avatar = req.user.profile.avatar
     req.body.ownerId = req.user.profile._id
+    req.body.text = req.body.text.trim()
     post.comments.push(req.body)
     post.save()
     res.redirect('/posts')
@@ -287,7 +288,7 @@ export {
   toggleCommentLike,
   deletePost as delete,
   deleteComment,
-  uploadFiles,
-  getListFiles,
-  download
+  // uploadFiles,
+  // getListFiles,
+  // download
 }

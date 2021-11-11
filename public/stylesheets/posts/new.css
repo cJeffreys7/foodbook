@@ -45,3 +45,7 @@ header > div {
   margin-left: 116px;
   font-size: 1.6rem;
 }
+
+.preview {
+  width: 90%;
+}
