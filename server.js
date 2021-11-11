@@ -8,6 +8,7 @@ import logger from 'morgan'
 import methodOverride from 'method-override'
 import passport from 'passport'
 import { passUserToView } from './middleware/middleware.js'
+import cors from 'cors'
 
 // connect to MongoDB with mongoose
 import('./config/database.js')
@@ -35,6 +36,7 @@ app.set('view engine', 'ejs')
 app.use(methodOverride('_method'))
 app.use(logger('dev'))
 app.use(express.json())
+app.use(cors({ origin: "http://localhost:3001" }))
 app.use(express.urlencoded({ extended: true }))
 app.use(
   express.static(

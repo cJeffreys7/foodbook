@@ -2,6 +2,7 @@
 
 <link rel="stylesheet" href="/stylesheets/nav.css">
 <link rel="stylesheet" href="/stylesheets/posts/new.css">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
 
 </head>
 <body>
@@ -13,7 +14,8 @@
     </nav>
     <main>
       <header>
-        <img 
+        <img
+          id="profile-img"
           src="<%= user.profile.avatar %>" 
           alt="<%= user.profile.name %> avatar"
         >
@@ -22,5 +24,50 @@
       <textarea id="text-input" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none" placeholder="What's new in the food world, <%= user.profile.name %>?"></textarea>
     </main>
   </form>
+  <form class="mt-4"
+    action="/posts/upload"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="form-group">
+      <input
+        type="file"
+        name="file"
+        id="input-files"
+        class="form-control-file border"
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>      
+  <div class="preview-images"></div>
+
+  <form action="/posts/files/1636650986990-FBLoginScreen.png" method="get">
+    <button type="submit">Get Files</button>
+  </form>
 
 <%- include('../partials/footer') %>
+
+<script>
+  const fileInput = document.querySelector("#input-files")
+  const filePreviewEl = document.querySelector(".preview-images")
+
+  fileInput.addEventListener("change", imagesPreview(this, filePreviewEl))
+
+  function imagesPreview(input, imagePreviewElement) {
+    console.log('Show preview image')
+    console.log('Input:', input.files)
+    if (input.files) {
+      let filesAmount = input.files.length
+      for (let i = 0; i < filesAmount; i++) {
+        let reader = new FileReader()
+        reader.onload = function(evt) {
+          let imagePreview = document.createElement("img")
+          imagePreview.setAttribute("src", evt.target.result)
+          imagePreviewElement.appendChild(imagePreview)
+        }
+        reader.readAsDataURL(input.files[i])
+        console.log('Read file:', input.files[i])
+      }
+    }
+  }
+</script>

@@ -1,10 +1,8 @@
 import { Router } from 'express'
-// import multer from 'multer'
 import * as postsCtrl from '../controllers/posts.js'
 import { isLoggedIn } from '../middleware/middleware.js'
 
 const router = Router()
-// const upload = multer({dest: 'uploads/'})
 
 // localhost:3000/posts - GET
 router.get('/', isLoggedIn, postsCtrl.index)
@@ -19,7 +17,14 @@ router.get('/new', isLoggedIn, postsCtrl.new)
 router.get('/:id/edit', isLoggedIn, postsCtrl.edit)
 
 // localhost:3000/posts - POST
-router.post('/', isLoggedIn, postsCtrl.create) //upload.single('postImage'), 
+router.post('/', isLoggedIn, postsCtrl.create)
+
+// localhost:3000/posts/upload - POST
+router.post('/upload', isLoggedIn, postsCtrl.uploadFiles)
+
+router.get('/files', isLoggedIn, postsCtrl.getListFiles)
+
+router.get('/files/:name', isLoggedIn, postsCtrl.download)
 
 // localhost:3000/posts/:id/comments - POST
 router.post('/:id/comments', isLoggedIn, postsCtrl.createComment)

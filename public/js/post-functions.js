@@ -26,7 +26,6 @@ function setPostStatsVisibility(postIdx) {
   const postLikeCount = parseInt(document.getElementById(`post-${postIdx}-like-count`).textContent)
   const postCommentCount = parseInt(document.getElementById(`post-${postIdx}-comment-count`).textContent)
   const postFavoriteCount = parseInt(document.getElementById(`post-${postIdx}-favorite-count`).textContent)
-  console.log(postLikeCount, 'likes, ', postCommentCount, 'comments, ', postFavoriteCount, 'favorites on post ', postIdx, statBar)
   if (statBar.classList.contains("removed-stat")) {
     if (postLikeCount || postCommentCount || postFavoriteCount) {
       statBar.classList.remove("removed-stat")
