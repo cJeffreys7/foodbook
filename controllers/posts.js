@@ -160,13 +160,15 @@ function create(req, res) {
 function createComment(req, res) {
   Post.findById(req.params.id)
   .then(post => {
+    let routeBackPath = req.body.routebackpath
+    req.body.routebackpath = ""
     req.body.name = req.user.profile.name
     req.body.avatar = req.user.profile.avatar
     req.body.ownerId = req.user.profile._id
     req.body.text = req.body.text.trim()
     post.comments.push(req.body)
     post.save()
-    res.redirect('/posts')
+    res.redirect(routeBackPath)
   })
   .catch(err => {
     console.log(err)
@@ -197,7 +199,7 @@ function updateComment(req, res) {
       console.log('Unable to find comment id')
     }
     post.save()
-    res.redirect(`/profiles/${req.user.profile._id}`)
+    res.status(204).send()
   })
   .catch(err => {
     console.log(err)
@@ -249,7 +251,7 @@ function toggleCommentLike(req, res) {
 function deletePost(req, res) {
   Post.findByIdAndDelete(req.params.id)
   .then(() => {
-    res.redirect(`/profiles/${req.user.profile._id}`)
+    res.redirect(req.body.routebackpath)
   })
   .catch(err => {
     console.log(err)
@@ -267,7 +269,7 @@ function deleteComment(req, res) {
       console.log('Unable to find comment id')
     }
     post.save()
-    res.redirect(`/profiles/${req.user.profile._id}`)
+    res.redirect(req.body.routebackpath)
   })
   .catch(err => {
     console.log(err)

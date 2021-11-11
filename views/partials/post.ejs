@@ -30,6 +30,7 @@
             </li>
             <li>
               <form class="dropdown-item" action="/posts/<%= post._id %>?_method=DELETE" method="POST">
+                <input type="hidden" name="routebackpath" value="<%= routebackpath %>" >
                 <button id="delete-btn" class="edit-dropdown-btn" type="submit">
                   <i class="fas fa-trash-alt"></i> Delete Post
                 </button>
@@ -97,9 +98,10 @@
           alt="<%= user.profile.name %> avatar"
         >
         <form action="/posts/<%= post._id %>/comments" method="POST">
-          <textarea class="comment-text" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none" rows="2" placeholder="Add a comment..."></textarea>
-          <div id="blank-comment-submit-btn">
-            <button type="submit">
+          <textarea id="post-<%= postIdx %>-blank-comment-text" class="comment-text" name="text" style="resize: none;" oninput='this.style.height = "";this.style.height = this.scrollHeight + "px"' outline="none" rows="2" placeholder="Add a comment..." required></textarea>
+          <input type="hidden" name="routebackpath" value="<%= routebackpath %>" >
+          <div id="blank-comment-submit-btn-wrapper">
+            <button id="post-<%= postIdx %>-comment-submit-btn" class="blank-comment-submit-btn" type="submit">
               Submit
             </button>
           </div>

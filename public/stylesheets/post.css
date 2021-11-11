@@ -108,13 +108,12 @@ footer > div {
   width: 48px;
 }
 
-#blank-comment-submit-btn {
+#blank-comment-submit-btn-wrapper {
   display: flex;
   justify-content: center;
 }
 
-#blank-comment-submit-btn
-> button {
+.blank-comment-submit-btn {
   font-size: 1.4rem !important;
   background-color: var(--nav-link);
   padding-left: 4px;

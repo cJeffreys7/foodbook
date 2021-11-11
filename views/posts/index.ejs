@@ -13,7 +13,7 @@
 
 <main>
   <% posts.forEach(function(post, postIdx) { %>
-    <%- include('../partials/post', {post, postIdx}) %>
+    <%- include('../partials/post', {post, postIdx, routebackpath: title === "Newsfeed" ? `/posts` :  `/posts/${user.profile._id}/favorites`}) %>
   <% }) %>
 </main>
 

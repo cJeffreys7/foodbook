@@ -3,6 +3,7 @@ const editCommentDropdowns = document.querySelectorAll(".edit-comment-dropdown")
 const editCommentBtns = document.querySelectorAll(".edit-comment-btn")
 const cancelEditCommentBtns = document.querySelectorAll(".cancel-edit-comment-btn")
 const likeCommentBtns = document.querySelectorAll(".like-btn")
+const updateCommentBtns = document.querySelectorAll(".update-comment-btn")
 
 postCommentBtns.forEach(btn => {
   btn.addEventListener("click", showComments)
@@ -15,6 +16,9 @@ cancelEditCommentBtns.forEach(btn => {
 })
 likeCommentBtns.forEach(btn => {
   btn.addEventListener("click", toggleCommentLike)
+})
+updateCommentBtns.forEach(btn => {
+  btn.addEventListener("click", updateComment)
 })
 
 function initialTextAreaResize(postIdx){
@@ -59,4 +63,11 @@ function toggleCommentLike(evt) {
   let postIdx = elementIdArr[1]
   let commentIdx = elementIdArr[4]
   document.getElementById(`post-${postIdx}-like-comment-${commentIdx}-btn`).classList.toggle("action-highlight")
+}
+
+function updateComment(evt) {
+  const elementIdArr = evt.target.id.split('-')
+  let postIdx = elementIdArr[2]
+  let commentIdx = elementIdArr[4]
+  toggleEditComment(postIdx, commentIdx, true)
 }

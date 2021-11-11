@@ -28,7 +28,7 @@
           readonly
         ><%= comment.text %></textarea>
         <div id="edit-post-<%= postIdx %>-comment-<%= commentIdx %>-text" class="edit-comment-body hidden-btn">
-          <button id="comment-btn" class="edit-btn" type="submit">
+          <button id="update-post-<%= postIdx %>-comment-<%= commentIdx %>-btn" class="edit-btn update-comment-btn" type="submit">
             Submit
           </button>
           <button id="cancel-edit-post-<%= postIdx %>-comment-btn-<%= commentIdx %>" class="cancel-edit-comment-btn edit-btn" type="button">
@@ -49,6 +49,7 @@
             </li>
             <li>
               <form class="dropdown-item" action="/posts/<%= post._id%>/comments/<%= comment._id %>?_method=DELETE" method="POST">
+                <input type="hidden" name="routebackpath" value="<%= routebackpath %>" >
                 <button class="edit-comment-btn" type="submit">
                   <i class="fas fa-trash-alt"></i> Delete Comment
                 </button>

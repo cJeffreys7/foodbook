@@ -24,7 +24,7 @@
     </header>
     <% if (isSelf) { %>
       <% profile.posts.forEach(function(post, postIdx) { %>
-        <%- include('../partials/post', {post, postIdx}) %>
+        <%- include('../partials/post', {post, postIdx, routebackpath: `/profiles/${user.profile._id}`}) %>
       <% }) %>
     <% } else { %>
       <% if (self.followedProfiles && self.followedProfiles.includes(profile._id)) { %>
@@ -35,7 +35,7 @@
           </button>
         </form>
         <% profile.posts.forEach(function(post, postIdx) { %>
-          <%- include('../partials/post', {post, postIdx}) %>
+          <%- include('../partials/post', {post, postIdx, routebackpath: `/profiles/${profile._id}`}) %>
         <% }) %>
       <% } else { %>
         <form action="/profiles/<%= user.profile._id %>/toggleFollowing?_method=PATCH" method="POST">
