@@ -23,6 +23,15 @@
       >
     </header>
     <% if (isSelf) { %>
+      <% if (!profile.posts.length) { %>
+        <h2>You don't have any posts yet!</h2><br>
+        <h3>Create a New Post</h3>
+        <a class="nav-icon-link" href="/posts/new">
+          <button type="submit">
+            <i class="fas fa-pen"></i>
+          </button>
+        </a>
+      <% } %>
       <% profile.posts.forEach(function(post, postIdx) { %>
         <%- include('../partials/post', {post, postIdx, routebackpath: `/profiles/${user.profile._id}`}) %>
       <% }) %>

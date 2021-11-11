@@ -71,7 +71,7 @@
 - [x] User can favorite a Post
 - [x] User can view favorited Posts
 - [x] User can view own Profile to see own Posts
-- [ ] User can view a Post
+- [x] User can view their own Post
 - [x] User can Comment on a Post
 - [x] User can edit own Posts
 - [x] User can delete own Posts
@@ -79,9 +79,10 @@
 - [x] User can delete own Comments
 - [ ] User can attach images to Posts
 - [ ] User can update Profile Image and Profile Background Image
-- [ ] User can route back to relevant page from the Post view
+- [x] User can route back to relevant page from the Post view
 - [ ] User can dynamically load more Posts in Newsfeed view when scrolling to bottom of currently loaded Posts
-- [ ] User can Like, Favorite, or Comment on a Post without reloading the page
+- [x] User can Like or Favorite on a Post without reloading the page
+- [ ] User can Comment on a Post without reloading the page
 - [ ] User can see Notifications from activity on own Posts
 - [ ] User can flag a Post
 - [ ] Admin can review flagged Posts
