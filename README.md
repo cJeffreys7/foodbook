@@ -77,11 +77,11 @@
 - [x] User can delete own Posts
 - [x] User can edit own Comments
 - [x] User can delete own Comments
+- [x] User can route back to relevant page from the Post view
+- [x] User can Like or Favorite on a Post without reloading the page
 - [ ] User can attach images to Posts
 - [ ] User can update Profile Image and Profile Background Image
-- [x] User can route back to relevant page from the Post view
 - [ ] User can dynamically load more Posts in Newsfeed view when scrolling to bottom of currently loaded Posts
-- [x] User can Like or Favorite on a Post without reloading the page
 - [ ] User can Comment on a Post without reloading the page
 - [ ] User can see Notifications from activity on own Posts
 - [ ] User can flag a Post
