@@ -25,42 +25,5 @@
       <img src="" class="preview">
     </main>
   </form>
-  <!-- <form action="/posts/upload" method="post">
-    <input
-        type="file"
-        name="file"
-        accept="image/png, image/jpeg"
-      />
-      <button type="submit">Add Photo</button>
-  </form> -->
 
 <%- include('../partials/footer') %>
-
-<!-- <script>
-  const fileInput = document.querySelector('input[type="file"]')
-  const preview = document.querySelector('img.preview')
-
-  const reader = new FileReader()
-
-  function handleEvent(event) {
-      console.log(`${event.type}: ${event.loaded} bytes transferred\n`)
-
-      if (event.type === "load") {
-          preview.src = reader.result
-      }
-  }
-
-  function addListeners(reader) {
-      reader.addEventListener('load', handleEvent)
-  }
-
-  function handleSelected(e) {
-      const selectedFile = fileInput.files[0]
-      if (selectedFile) {
-          addListeners(reader)
-          reader.readAsDataURL(selectedFile)
-      }
-  }
-
-  fileInput.addEventListener('change', handleSelected)
-</script> -->

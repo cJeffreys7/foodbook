@@ -11,13 +11,13 @@ nav {
   justify-content: space-around;
   align-items: stretch;
   background-color: var(--main-accent);
+  z-index: 1;
 }
 
 button {
   background: none;
   border: none;
   padding: 0;
-  /* color: var(--nav-link); */
   font-size: 2.3rem  !important;
 }
   

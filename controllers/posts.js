@@ -1,17 +1,5 @@
 import { Post } from '../models/post.js'
 import { Profile } from '../models/profile.js'
-import { upload } from '../middleware/upload.js'
-import { dbConfig } from '../config/database.js'
-import { MongoClient } from 'mongodb'
-import { GridFSBucket } from 'mongodb'
-// const MongoClient = require("mongodb").MongoClient
-// const GridFSBucket = require("mongodb").GridFSBucket
-
-const url = process.env.DATABASE_URL
-
-const baseUrl = "http://localhost:3000/files/"
-
-const mongoClient = new MongoClient(url)
 
 function index(req, res) {
   Post.find({})
@@ -83,79 +71,6 @@ function create(req, res) {
     res.redirect('/posts')
   })
 }
-
-// async function uploadFiles(req, res) {
-//   try {
-//     await upload(req, res)
-//     console.log("Uploaded file", req.file)
-//     if (req.file === undefined) {
-//       res.send({
-//         message: "You must select a file."
-//       })
-//     }
-//     res.send({
-//       message: "File has been uploaded."
-//     })
-//   } catch (error) {
-//     console.log("Error:", error)
-//     res.send({
-//       message: `Error when trying to upload image: ${error}`
-//     })
-//   }
-// }
-
-// async function getListFiles(req, res) {
-//   try {
-//     await mongoClient.connect()
-//     const database = mongoClient.db(dbConfig.database)
-//     const images = database.collection("uploads.files")
-//     const cursor = images.find({})
-//     if ((await cursor.count()) === 0) {
-//       res.status(500).send({
-//         message: "No files found!"
-//       })
-//     }
-//     let fileInfos = []
-//     await cursor.forEach(doc => {
-//       fileInfos.push({
-//         name: doc.filename,
-//         url: baseUrl + doc.filename
-//       })
-//     })
-//     console.log('Files:', fileInfos)
-//     res.status(200).send(fileInfos)
-//   } catch (error) {
-//     res.status(500).send({
-//       message: error.message
-//     })
-//   }
-// }
-
-// async function download(req, res) {
-//   try {
-//     await mongoClient.connect()
-//     const database = mongoClient.db(dbConfig.database)
-//     const bucket = new GridFSBucket(database, {
-//       bucketName: 'uploads'
-//     })
-//     let downloadStream = bucket.openDownloadStreamByName(req.params.name)
-//     downloadStream.on("data", function(data) {
-//       res.status(200).write(data)
-//     })
-//     downloadStream.on("error", function(err) {
-//       res.status(404).send({
-//         message: "Cannot download the Image!"
-//       })
-//     })
-//     downloadStream.on("end", () => {
-//       res.end()
-//     })
-//   } catch (error) {
-//     res.status(500).send({
-//       message: error.message
-//     })
-//   }
-// }
 
 function createComment(req, res) {
   Post.findById(req.params.id)
@@ -289,8 +204,5 @@ export {
   toggleLike,
   toggleCommentLike,
   deletePost as delete,
-  deleteComment,
-  // uploadFiles,
-  // getListFiles,
-  // download
+  deleteComment
 }
