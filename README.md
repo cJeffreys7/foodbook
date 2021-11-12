@@ -58,7 +58,7 @@
 ## Wireframe
 
 <img src="./public/images/readme/FBNewsfeedView(Mobile).png">
-<img src="./public/images/readme/FBHomeView-ExpandedComments(Desktop).png">
+<img src="./public/images/readme/FoodBookERD.png">
 
 #### Additional wireframes can be seen [here](https://trello.com/b/87eZplTi/foodbook)
 
