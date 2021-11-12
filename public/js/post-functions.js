@@ -4,7 +4,6 @@ const postLikeStats = document.querySelectorAll(".post-likes-stat")
 const postCommentStats = document.querySelectorAll(".post-comments-stat")
 const favPostBtns = document.querySelectorAll(".favorite-post-btn")
 const postFavoriteStats = document.querySelectorAll(".post-favorites-stat")
-// const submitCommentBtns = document.querySelectorAll(".blank-comment-submit-btn")
 
 likePostBtns.forEach(btn => {
   btn.addEventListener("click", togglePostLike)
@@ -12,9 +11,6 @@ likePostBtns.forEach(btn => {
 favPostBtns.forEach(btn => {
   btn.addEventListener("click", togglePostFavorite)
 })
-// submitCommentBtns.forEach(btn => {
-//   btn.addEventListener("click", addNewComment)
-// })
 
 init()
 

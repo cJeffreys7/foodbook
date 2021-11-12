@@ -1,48 +1,55 @@
 # FoodBook
 
+### The social network for all things food!
+
+#
 ## Getting Started
 
-### To begin using the social network for all things food, first head to the deployed site [here](https://foodbookapp.herokuapp.com/)!
-
-#### Log into FoodBook by using your Google login:
+### To begin using Foodbook, head to the deployed site [here](https://foodbookapp.herokuapp.com/)!
 
 <img src="./public/images/readme/FBLoginScreen.png">
 
-#### Access your newsfeed by clicking on the newsfeed icon:
+#### Log into FoodBook by using your Google login:
 
 <img src="./public/images/readme/FBNewsfeed.png">
 
-#### If you see a post you enjoy, give it a like! Share your thoughts by commenting on the post, and favorite the post to easily find it again later:
+#### Access your newsfeed by clicking on the newsfeed icon:
 
 <img src="./public/images/readme/FBPostComment.png">
 
-#### If you have something to share with the rest of the culinary world, create your own post by clicking on the new post icon:
+#### If you see a post you enjoy, give it a like! Share your thoughts by commenting on the post, and favorite the post to easily find it again later:
 
 <img src="./public/images/readme/FBNewPost.png">
 
-#### If someone is dishing out some delicious content, click on their profile icon to check out their profile and start following them:
+#### If you have something to share with the rest of the culinary world, create your own post by clicking on the new post icon:
 
 <img src="./public/images/readme/FBProfileView.png">
 
-#### You can see all profiles you are following by clicking on the followed profiles icon:
+#### If someone is dishing out some delicious content, click on their profile icon to check out their profile and start following them:
 
 <img src="./public/images/readme/FBFollowedProfiles.png">
 
-#### To see any posts that stood out to you, head over to your favorites by clicking on the favorites icon:
+#### You can see all profiles you are following by clicking on the followed profiles icon:
 
 <img src="./public/images/readme/FBFavoritePosts.png">
 
-#### To see how your profile looks, click on the profile icon or click on your profile icon in one of your posts:
+#### To see any posts that stood out to you, head over to your favorites by clicking on the favorites icon:
 
 <img src="./public/images/readme/FBViewYourProfile.png">
 
-#### Start cooking up some content and enjoy what others are serving on FoodBook!
+#### To see how your profile looks, click on the profile icon or click on your profile icon in one of your posts:
+
+
+
+### Start cooking up some content and enjoy what others are serving on FoodBook!
+
+#
 ## Technologies Used
 
 - JavaScript
-- HTML
 - EJS
 - CSS
+- Bootstrap
 - Node.js
 - Express
 - MongoDB
@@ -55,11 +62,14 @@
 
 #### Additional wireframes can be seen [here](https://trello.com/b/87eZplTi/foodbook)
 
+#
 ## Attributions:
 
 * Icons from [FontAwesome](https://fontawesome.com/)
 * Images from [Freepik](): Vectors from [pch.vector](https://www.freepik.com/pch-vector)
+* Tutorial on image storage using Multer from [BezKoder](https://www.bezkoder.com/node-js-upload-store-images-mongodb/)
 
+#
 ## Next Steps
 
 - [x] OAuth login
@@ -86,3 +96,4 @@
 - [ ] User can see Notifications from activity on own Posts
 - [ ] User can flag a Post
 - [ ] Admin can review flagged Posts
+- [ ] Style desktop views
