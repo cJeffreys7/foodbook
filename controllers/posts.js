@@ -114,7 +114,7 @@ function updateComment(req, res) {
       console.log('Unable to find comment id')
     }
     post.save()
-    res.status(204).send()
+    res.status(204).end()
   })
   .catch(err => {
     console.log(err)
@@ -132,7 +132,7 @@ function toggleLike(req, res) {
       post.likes.push(req.user.profile._id)
     }
     post.save()
-    res.status(204).send()
+    res.status(204).end()
   })
   .catch(err => {
     console.log(err)
@@ -155,7 +155,7 @@ function toggleCommentLike(req, res) {
       console.log('Unable to find comment id')
     }
     post.save()
-    res.status(204).send()
+    res.status(204).end()
   })
   .catch(err => {
     console.log(err)
