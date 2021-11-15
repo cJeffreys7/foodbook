@@ -78,7 +78,8 @@ function toggleFavorite(req, res) {
           post.favorites.push(req.user.profile._id)
         }
         post.save()
-        res.status(204).end()
+        res.status(204)
+        res.end()
       })
     })
   })
