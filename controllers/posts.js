@@ -115,7 +115,6 @@ function updateComment(req, res) {
     }
     post.save()
     res.status(204)
-    req.destroy()
     res.end()
   })
   .catch(err => {
@@ -135,7 +134,6 @@ function toggleLike(req, res) {
     }
     post.save()
     res.status(204)
-    req.destroy()
     res.end()
   })
   .catch(err => {
@@ -160,7 +158,6 @@ function toggleCommentLike(req, res) {
     }
     post.save()
     res.status(204)
-    req.destroy()
     res.end()
   })
   .catch(err => {

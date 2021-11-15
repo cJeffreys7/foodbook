@@ -79,7 +79,6 @@ function toggleFavorite(req, res) {
         }
         post.save()
         res.status(204)
-        req.destroy()
         res.end()
       })
     })
