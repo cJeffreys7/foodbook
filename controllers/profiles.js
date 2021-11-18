@@ -79,7 +79,11 @@ function toggleFavorite(req, res) {
           post.favorites.push(req.user.profile._id)
         }
         post.save()
-        res.status(200).send(`You are using ${req.body.os}`)
+        if (req.body.os == "iOS"){
+          res.redirect(req.body.routebackpath)
+        } else{
+          res.status(204).end()
+        }
       })
     })
   })

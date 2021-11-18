@@ -20,6 +20,7 @@
     <div id="comment-text-body">
       <form id="edit-text-form" action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PATCH" method="POST">
         <input class="os-data" type="hidden" name="os">
+        <input type="hidden" name="routebackpath" value="<%= routebackpath %>" >
         <textarea 
           id="post-<%= postIdx %>-comment-<%= commentIdx %>-text"
           class="user-comment-text post-<%= postIdx %>-comment"
@@ -63,6 +64,7 @@
     <div id="comment-actions">
       <form action="/posts/<%= post._id %>/comments/<%= comment._id %>/toggleLike?_method=PATCH" method="POST">
         <input class="os-data" type="hidden" name="os">
+        <input type="hidden" name="routebackpath" value="<%= routebackpath %>" >
         <button id="post-<%= postIdx %>-like-comment-<%= commentIdx %>-btn" class="like-btn <%= (comment.likes.includes(user.profile._id)) ? "action-highlight" : "" %>" type="submit">
           <i class="fas fa-thumbs-up"></i>
           Like
