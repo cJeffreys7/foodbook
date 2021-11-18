@@ -115,8 +115,7 @@ function updateComment(req, res) {
       console.log('Unable to find comment id')
     }
     post.save()
-    console.log(`Platform stats: ${platform}`)
-    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer. ${platform}`)
+    res.status(200).send(`You are using ${req.body.os}`)
   })
   .catch(err => {
     console.log(err)
@@ -125,6 +124,7 @@ function updateComment(req, res) {
 }
 
 function toggleLike(req, res) {
+  console.log('Toggle Like Body: ', req.body)
   Post.findById(req.params.id)
   .then(post => {
     const foundId = post.likes.findIndex(like => like.toString().includes(req.user.profile._id))
@@ -134,8 +134,7 @@ function toggleLike(req, res) {
       post.likes.push(req.user.profile._id)
     }
     post.save()
-    console.log(`Platform stats: ${platform}`)
-    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer. ${platform}`)
+    res.status(200).send(`You are using ${req.body.os}`)
   })
   .catch(err => {
     console.log(err)
@@ -158,8 +157,7 @@ function toggleCommentLike(req, res) {
       console.log('Unable to find comment id')
     }
     post.save()
-    console.log(`Platform stats: ${platform}`)
-    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer. ${platform}`)
+    res.status(200).send(`You are using ${req.body.os}`)
   })
   .catch(err => {
     console.log(err)

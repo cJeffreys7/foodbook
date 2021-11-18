@@ -79,8 +79,7 @@ function toggleFavorite(req, res) {
           post.favorites.push(req.user.profile._id)
         }
         post.save()
-        console.log(`Platform stats: ${platform}`)
-        res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer. ${platform}`)
+        res.status(200).send(`You are using ${req.body.os}`)
       })
     })
   })

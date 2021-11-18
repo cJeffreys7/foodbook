@@ -4,6 +4,7 @@ const postLikeStats = document.querySelectorAll(".post-likes-stat")
 const postCommentStats = document.querySelectorAll(".post-comments-stat")
 const favPostBtns = document.querySelectorAll(".favorite-post-btn")
 const postFavoriteStats = document.querySelectorAll(".post-favorites-stat")
+const osDataInputs = document.querySelectorAll(".os-data")
 
 likePostBtns.forEach(btn => {
   btn.addEventListener("click", togglePostLike)
@@ -19,6 +20,7 @@ function init() {
   setStatVisibility(postCommentStats)
   setStatVisibility(postFavoriteStats)
   postStats.forEach((statBar, idx) => setPostStatsVisibility(idx))
+  osDataInputs.forEach(dIn => platformInfo(dIn))
 }
 
 function setPostStatsVisibility(postIdx) {
@@ -85,4 +87,9 @@ function togglePostFavorite(evt) {
   }
   favoriteCount.textContent = favoriteCountAmount
   setPostStatsVisibility(postIdx)
+}
+
+function platformInfo(inputEl){
+  inputEl.value = platform.os.family
+  // return platform
 }
