@@ -67,6 +67,7 @@
 
 * Icons from [FontAwesome](https://fontawesome.com/)
 * Images from [Freepik](): Vectors from [pch.vector](https://www.freepik.com/pch-vector)
+* Profile Image Backgrounds from [Lorem Picsum](https://picsum.photos/)
 * Tutorial on image storage using Multer from [BezKoder](https://www.bezkoder.com/node-js-upload-store-images-mongodb/)
 
 #
