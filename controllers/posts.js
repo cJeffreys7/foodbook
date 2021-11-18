@@ -1,5 +1,6 @@
 import { Post } from '../models/post.js'
 import { Profile } from '../models/profile.js'
+import platform from 'platform'
 
 function index(req, res) {
   Post.find({})
@@ -114,8 +115,8 @@ function updateComment(req, res) {
       console.log('Unable to find comment id')
     }
     post.save()
-    res.status(205).send()
-    // res.end()
+    console.log(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
+    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
   })
   .catch(err => {
     console.log(err)
@@ -133,8 +134,8 @@ function toggleLike(req, res) {
       post.likes.push(req.user.profile._id)
     }
     post.save()
-    res.status(205).send()
-    // res.end()
+    console.log(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
+    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
   })
   .catch(err => {
     console.log(err)
@@ -157,8 +158,8 @@ function toggleCommentLike(req, res) {
       console.log('Unable to find comment id')
     }
     post.save()
-    res.status(205).send()
-    // res.end()
+    console.log(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
+    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
   })
   .catch(err => {
     console.log(err)

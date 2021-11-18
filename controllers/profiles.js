@@ -1,5 +1,6 @@
 import { Profile } from "../models/profile.js"
 import { Post } from "../models/post.js"
+import platform from 'platform'
 
 function index(req, res) {
   Profile.findById(req.user.profile._id)
@@ -78,8 +79,8 @@ function toggleFavorite(req, res) {
           post.favorites.push(req.user.profile._id)
         }
         post.save()
-        res.status(205).send()
-        // res.end()
+        console.log(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
+        res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
       })
     })
   })
