@@ -115,8 +115,8 @@ function updateComment(req, res) {
       console.log('Unable to find comment id')
     }
     post.save()
-    console.log(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
-    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
+    console.log(`Platform stats: ${platform}`)
+    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer. ${platform}`)
   })
   .catch(err => {
     console.log(err)
@@ -134,8 +134,8 @@ function toggleLike(req, res) {
       post.likes.push(req.user.profile._id)
     }
     post.save()
-    console.log(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
-    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
+    console.log(`Platform stats: ${platform}`)
+    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer. ${platform}`)
   })
   .catch(err => {
     console.log(err)
@@ -158,8 +158,8 @@ function toggleCommentLike(req, res) {
       console.log('Unable to find comment id')
     }
     post.save()
-    console.log(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
-    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer`)
+    console.log(`Platform stats: ${platform}`)
+    res.status(200).send(`You are using ${platform.name} on a ${platform.product} product using ${platform.manugacturer || 'unknown vendor'} manufacturer. ${platform}`)
   })
   .catch(err => {
     console.log(err)
